@@ -71,7 +71,7 @@ class WeirdoPanelServiceProvider extends ServiceProvider
         // Load relationship for administrators
         $this->loadRelations();
 
-        Blade::componentNamespace("\\EasyPanel\\ViewComponents", 'easypanel');
+        Blade::componentNamespace("\\WeirdoPanel\\ViewComponents", 'weirdopanel');
     }
 
     private function defineRoutes()
@@ -126,8 +126,8 @@ class WeirdoPanelServiceProvider extends ServiceProvider
         $this->publishes([__DIR__ . '/../resources/assets' => public_path('/assets/admin')], 'weirdo-panel-styles');
 
         $this->publishes([
-            __DIR__ . '/../database/migrations/cruds_table.php' => base_path('/database/migrations/' . date('Y_m_d') . '_999999_create_cruds_table_easypanel.php'),
-            __DIR__ . '/../database/migrations/panel_admins_table.php' => base_path('/database/migrations/' . date('Y_m_d') . '_999999_create_panel_admins_table_easypanel.php'),
+            __DIR__ . '/../database/migrations/cruds_table.php' => base_path('/database/migrations/' . date('Y_m_d') . '_999999_create_cruds_table_weirdopanel.php'),
+            __DIR__ . '/../database/migrations/panel_admins_table.php' => base_path('/database/migrations/' . date('Y_m_d') . '_999999_create_panel_admins_table_weirdopanel.php'),
         ], 'weirdo-panel-migration');
 
         $this->publishes([__DIR__.'/../resources/lang' => app()->langPath()], 'weirdo-panel-lang');

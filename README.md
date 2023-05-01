@@ -3,7 +3,7 @@ WeirdoPanel es un panel de administración hermoso, personalizable y flexible ba
 
 
 ## Guía de instalación y uso:
-Para ver cómo instalar EasyPanel y usarlo, consulte la documentación del paquete:
+Para ver cómo instalar WeirdoPanel y usarlo, consulte la documentación del paquete:
 
 ### Características:
 - Fácil de instalar 🚀
