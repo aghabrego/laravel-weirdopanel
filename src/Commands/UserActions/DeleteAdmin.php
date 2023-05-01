@@ -30,6 +30,6 @@ class DeleteAdmin extends Command
             return true;
         }
 
-        return $this->confirm("¿Quieres eliminar{$user} de la administración", 'yes');
+        return $this->confirm("¿Quieres eliminar {$user} de la administración", 'yes');
     }
 }

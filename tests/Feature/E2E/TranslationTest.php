@@ -11,9 +11,9 @@ use WeirdoPanel\Support\Contract\LangManager;
 
 class TranslationTest extends TestCase
 {
-
     /** @test * */
-    public function validations_works_properly(){
+    public function validations_works_properly()
+    {
         LangManager::shouldReceive('getTexts')->andReturn([]);
 
         Livewire::test(Manage::class)
@@ -24,7 +24,8 @@ class TranslationTest extends TestCase
     }
 
     /** @test * */
-    public function create_a_new_lang_requires_a_name(){
+    public function create_a_new_lang_requires_a_name()
+    {
         LangManager::shouldReceive('getTexts')->andReturn([]);
 
         Livewire::test(Manage::class)
@@ -34,7 +35,8 @@ class TranslationTest extends TestCase
     }
 
     /** @test * */
-    public function name_must_be_at_least_two_character_to_create_a_new_lang(){
+    public function name_must_be_at_least_two_character_to_create_a_new_lang()
+    {
         LangManager::shouldReceive('getTexts')->andReturn([]);
 
         Livewire::test(Manage::class)
@@ -44,7 +46,8 @@ class TranslationTest extends TestCase
     }
 
     /** @test * */
-    public function lang_must_be_a_string(){
+    public function lang_must_be_a_string()
+    {
         LangManager::shouldReceive('getTexts')->andReturn([]);
 
         Livewire::test(Manage::class)
@@ -56,7 +59,8 @@ class TranslationTest extends TestCase
     }
 
     /** @test * */
-    public function language_must_be_ten_character_maximum(){
+    public function language_must_be_ten_character_maximum()
+    {
         LangManager::shouldReceive('getTexts')->andReturn([]);
 
         Livewire::test(Manage::class)
@@ -66,7 +70,8 @@ class TranslationTest extends TestCase
     }
 
     /** @test * */
-    public function lang_updates_properly(){
+    public function lang_updates_properly()
+    {
         $array = [
             'TEST' => '::test::'
         ];
@@ -81,7 +86,8 @@ class TranslationTest extends TestCase
     }
 
     /** @test * */
-    public function selected_lang_is_read_from_config(){
+    public function selected_lang_is_read_from_config()
+    {
         LangManager::shouldReceive('getTexts')->andReturn([]);
 
         config()->set('weirdo_panel.lang', 'fa');
@@ -93,7 +99,8 @@ class TranslationTest extends TestCase
     }
 
     /** @test * */
-    public function when_lang_is_null_in_config_a_default_value_will_be_used(){
+    public function when_lang_is_null_in_config_a_default_value_will_be_used()
+    {
         LangManager::shouldReceive('getTexts')->andReturn([]);
 
         $lang = Livewire::test(Manage::class)
@@ -103,7 +110,8 @@ class TranslationTest extends TestCase
     }
 
     /** @test * */
-    public function when_language_changes_the_texts_will_be_reread(){
+    public function when_language_changes_the_texts_will_be_reread()
+    {
         $array = [
             'TEST' => '::test::'
         ];
@@ -122,7 +130,8 @@ class TranslationTest extends TestCase
     }
 
     /** @test * */
-    public function language_will_be_reset_after_creation(){
+    public function language_will_be_reset_after_creation()
+    {
         LangManager::shouldReceive('getTexts')->andReturn([]);
 
         $func = function ($lang){
@@ -134,5 +143,4 @@ class TranslationTest extends TestCase
             ->call('create')
             ->get('language'), $func);
     }
-
 }

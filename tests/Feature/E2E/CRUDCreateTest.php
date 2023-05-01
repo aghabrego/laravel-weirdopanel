@@ -11,49 +11,56 @@ class CRUDCreateTest extends TestCase
 {
 
     /** @test * */
-    public function it_opens_the_drop_down(){
+    public function it_opens_the_drop_down()
+    {
         Livewire::test(Create::class)
             ->call('setModel')
             ->assertSet('dropdown', true);
     }
 
     /** @test * */
-    public function it_closes_the_drop_down(){
+    public function it_closes_the_drop_down()
+    {
         Livewire::test(Create::class)
             ->call('closeModal')
             ->assertSet('dropdown', false);
     }
 
     /** @test * */
-    public function it_shows_the_drop_down_after_updating_model(){
+    public function it_shows_the_drop_down_after_updating_model()
+    {
         Livewire::test(Create::class)
             ->set('model', 'A')
             ->assertSet('dropdown', true);
     }
 
     /** @test * */
-    public function it_required_model_for_crud(){
+    public function it_required_model_for_crud()
+    {
         Livewire::test(Create::class)
             ->call('create')
             ->assertHasErrors('model');
     }
 
     /** @test * */
-   public function it_requires_route_for_crud(){
+    public function it_requires_route_for_crud()
+    {
         Livewire::test(Create::class)
             ->call('create')
             ->assertHasErrors('route');
     }
 
     /** @test * */
-    public function icon_can_be_nullable(){
+    public function icon_can_be_nullable()
+    {
         Livewire::test(Create::class)
             ->call('create')
             ->assertHasNoErrors('icon');
     }
 
     /** @test * */
-    public function if_icon_is_not_null_it_must_be_at_least_5_char(){
+    public function if_icon_is_not_null_it_must_be_at_least_5_char()
+    {
         Livewire::test(Create::class)
             ->set('icon', 'fa')
             ->call('create')
@@ -66,7 +73,8 @@ class CRUDCreateTest extends TestCase
     }
 
     /** @test * */
-    public function route_must_be_at_least_2_char(){
+    public function route_must_be_at_least_2_char()
+    {
         Livewire::test(Create::class)
             ->set('route', 'a')
             ->call('create')
@@ -79,7 +87,8 @@ class CRUDCreateTest extends TestCase
     }
 
     /** @test * */
-    public function model_must_be_at_least_8_char(){
+    public function model_must_be_at_least_8_char()
+    {
         Livewire::test(Create::class)
             ->set('model', 'a')
             ->call('create')
@@ -92,7 +101,8 @@ class CRUDCreateTest extends TestCase
     }
 
     /** @test * */
-    public function model_should_be_unique(){
+    public function model_should_be_unique()
+    {
         Livewire::test(Create::class)
             ->set('model', 'App\\User')
             ->call('create')
@@ -112,7 +122,8 @@ class CRUDCreateTest extends TestCase
     }
 
     /** @test * */
-    public function route_must_be_unique(){
+    public function route_must_be_unique()
+    {
         Livewire::test(Create::class)
             ->set('route', 'user')
             ->call('create')
@@ -130,5 +141,4 @@ class CRUDCreateTest extends TestCase
             ->call('create')
             ->assertHasErrors(['route' => 'unique']);
     }
-
 }

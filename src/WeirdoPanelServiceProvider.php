@@ -119,20 +119,20 @@ class WeirdoPanelServiceProvider extends ServiceProvider
 
     private function mergePublishes()
     {
-        $this->publishes([__DIR__ . '/../config/weirdo_panel_config.php' => config_path('weirdo_panel.php')], 'easy-panel-config');
+        $this->publishes([__DIR__ . '/../config/weirdo_panel_config.php' => config_path('weirdo_panel.php')], 'weirdo-panel-config');
 
-        $this->publishes([__DIR__ . '/../resources/views' => resource_path('/views/vendor/admin')], 'easy-panel-views');
+        $this->publishes([__DIR__ . '/../resources/views' => resource_path('/views/vendor/admin')], 'weirdo-panel-views');
 
-        $this->publishes([__DIR__ . '/../resources/assets' => public_path('/assets/admin')], 'easy-panel-styles');
+        $this->publishes([__DIR__ . '/../resources/assets' => public_path('/assets/admin')], 'weirdo-panel-styles');
 
         $this->publishes([
             __DIR__ . '/../database/migrations/cruds_table.php' => base_path('/database/migrations/' . date('Y_m_d') . '_999999_create_cruds_table_easypanel.php'),
             __DIR__ . '/../database/migrations/panel_admins_table.php' => base_path('/database/migrations/' . date('Y_m_d') . '_999999_create_panel_admins_table_easypanel.php'),
-        ], 'easy-panel-migration');
+        ], 'weirdo-panel-migration');
 
-        $this->publishes([__DIR__.'/../resources/lang' => app()->langPath()], 'easy-panel-lang');
+        $this->publishes([__DIR__.'/../resources/lang' => app()->langPath()], 'weirdo-panel-lang');
 
-        $this->publishes([__DIR__.'/Commands/stub' => base_path('/stubs/panel')], 'easy-panel-stubs');
+        $this->publishes([__DIR__.'/Commands/stub' => base_path('/stubs/panel')], 'weirdo-panel-stubs');
     }
 
     private function bindCommands()

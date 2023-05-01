@@ -13,7 +13,8 @@ use WeirdoPanel\Parsers\HTMLInputs\Ckeditor;
 class InputListClassTest extends TestCase
 {
     /** @test * */
-    public function it_returns_the_true_namespace(){
+    public function it_returns_the_true_namespace()
+    {
         $result = InputList::get('text');
         $expected = Text::class;
 
@@ -30,10 +31,10 @@ class InputListClassTest extends TestCase
     }
 
     /** @test * */
-    public function it_throws_an_exception_with_a_wrong_name(){
+    public function it_throws_an_exception_with_a_wrong_name()
+    {
         $this->expectException(\Exception::class);
 
         InputList::get('undefined');
     }
-
 }

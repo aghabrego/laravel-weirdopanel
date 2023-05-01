@@ -12,9 +12,9 @@ use WeirdoPanel\Parsers\HTMLInputs\Email;
 
 class StubParserTest extends \WeirdoPanelTest\TestCase
 {
-
     /** @test * */
-    public function make_tab_works(){
+    public function make_tab_works()
+    {
         $expected = "\n    ";
         $this->assertEquals($expected, $this->parser->makeTab(1));
 
@@ -26,13 +26,15 @@ class StubParserTest extends \WeirdoPanelTest\TestCase
     }
 
     /** @test * */
-    public function get_model_name_gives_true_name(){
+    public function get_model_name_gives_true_name()
+    {
         $this->assertEquals("Article", $this->parser->getModelName(Article::class));
         $this->assertEquals("User", $this->parser->getModelName(User::class));
     }
 
     /** @test * */
-    public function properties_will_be_parsed(){
+    public function properties_will_be_parsed()
+    {
         $this->parser->setInputs(['title' => 'text', 'content' => 'textarea']);
         $expected1 = 'public $title;';
         $expected2 = '    public $content;';
@@ -42,7 +44,8 @@ class StubParserTest extends \WeirdoPanelTest\TestCase
     }
 
     /** @test * */
-    public function properties_value_will_filled_in_actions(){
+    public function properties_value_will_filled_in_actions()
+    {
         $this->parser->setInputs(['title' => 'text', 'content' => 'textarea']);
         $expected1 = '\'title\' => $this->title,';
         $expected2 = '\'content\' => $this->content,';
@@ -59,7 +62,8 @@ class StubParserTest extends \WeirdoPanelTest\TestCase
     }
 
     /** @test * */
-    public function validation_will_be_parsed(){
+    public function validation_will_be_parsed()
+    {
         $this->parser->setValidationRules([
             'title' => 'required',
             'content' => 'min:10'
@@ -72,7 +76,8 @@ class StubParserTest extends \WeirdoPanelTest\TestCase
     }
 
     /** @test * */
-    public function data_string_will_be_normalized(){
+    public function data_string_will_be_normalized()
+    {
         $this->parser->setFields(['title']);
         $expected = '<td class="">{{ $article->title }}</td>';
         $this->assertStringContainsString($expected, $this->parser->parseDataInBlade());
@@ -83,7 +88,8 @@ class StubParserTest extends \WeirdoPanelTest\TestCase
     }
 
     /** @test * */
-    public function titles_of_table_will_be_parsed(){
+    public function titles_of_table_will_be_parsed()
+    {
         $this->parser->setFields(['title']);
         $expected = "wire:click=\"sort('title')\"";
         $expected2 = "{{ __('Title') }}";
@@ -98,7 +104,8 @@ class StubParserTest extends \WeirdoPanelTest\TestCase
     }
 
     /** @test * */
-    public function properties_will_be_filled_for_actions(){
+    public function properties_will_be_filled_for_actions()
+    {
         $this->parser->setInputs([
             'title' => 'text',
             'body' => 'ckeditor',
@@ -112,7 +119,8 @@ class StubParserTest extends \WeirdoPanelTest\TestCase
     }
 
     /** @test * */
-    public function input_class_will_returned_based_on_name(){
+    public function input_class_will_returned_based_on_name()
+    {
         $result = $this->parser->getInputClassNamespace('text');
         $expected = Text::class;
         $this->assertEquals($result, $expected);
@@ -123,13 +131,15 @@ class StubParserTest extends \WeirdoPanelTest\TestCase
     }
 
     /** @test * */
-    public function if_the_input_name_is_incorrect_it_will_throw_exception(){
+    public function if_the_input_name_is_incorrect_it_will_throw_exception()
+    {
         $this->expectException(\Exception::class);
         $this->parser->getInputClassNamespace('dasdsadas');
     }
 
     /** @test * */
-    public function fields_will_be_normalized(){
+    public function fields_will_be_normalized()
+    {
         $normalizedField = $this->parser->normalizeField('email');
         $this->assertInstanceOf(Field::class, $normalizedField);
 
@@ -137,7 +147,8 @@ class StubParserTest extends \WeirdoPanelTest\TestCase
     }
 
     /** @test * */
-    public function inputs_will_be_normalized(){
+    public function inputs_will_be_normalized()
+    {
         $normalizedField = $this->parser->normalizeInput('email', 'email');
         $this->assertInstanceOf(Email::class, $normalizedField);
         $this->assertEquals($normalizedField->getTitle(), 'Email');
@@ -153,5 +164,4 @@ class StubParserTest extends \WeirdoPanelTest\TestCase
         $normalizedField = $this->parser->normalizeInput('category', ['select' => []]);
         $this->assertInstanceOf(Select::class, $normalizedField);
     }
-
 }

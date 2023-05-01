@@ -8,9 +8,9 @@ use WeirdoPanelTest\Dependencies\User;
 
 class PanelAdminModelTest extends \WeirdoPanelTest\TestCase
 {
-
     /** @test * */
-    public function user_relation_is_an_instance_of_user_model(){
+    public function user_relation_is_an_instance_of_user_model()
+    {
         config()->set('weirdo_panel.user_model', User::class);
 
         $panelAdmin = PanelAdmin::query()->create([
@@ -20,5 +20,4 @@ class PanelAdminModelTest extends \WeirdoPanelTest\TestCase
 
         $this->assertInstanceOf(User::class, $panelAdmin->user);
     }
-
 }

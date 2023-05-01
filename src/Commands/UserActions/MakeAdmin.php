@@ -15,14 +15,12 @@ class MakeAdmin extends Command
     public function handle()
     {
         $user = $this->argument('user');
-        try{
+        try {
             $status = UserProviderFacade::makeAdmin($user, $this->option('super'));
             $method = $status['type'] == 'success' ? 'info' : 'warn';
-
             $this->$method($status['message']);
-        } catch (\Exception $exception){
+        } catch (\Exception $exception) {
             $this->warn("¡Algo salió mal!\nError: ". $exception->getMessage());
         }
     }
-
 }

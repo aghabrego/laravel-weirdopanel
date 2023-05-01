@@ -19,7 +19,8 @@ class TranslatableTest extends TestCase
     }
 
     /** @test * */
-    public function it_adds_texts_in_happy_path(){
+    public function it_adds_texts_in_happy_path()
+    {
         $this->translatable->addText('WeirdoPanel');
 
         $this->assertContains('WeirdoPanel', $this->translatable->getTexts());
@@ -27,7 +28,8 @@ class TranslatableTest extends TestCase
     }
 
     /** @test * */
-    public function if_key_is_not_null_it_will_be_used(){
+    public function if_key_is_not_null_it_will_be_used()
+    {
         $this->translatable->addText('Easy but Panel !', 'WeirdoPanel');
 
         $this->assertContains('Easy but Panel !', $this->translatable->getTexts());

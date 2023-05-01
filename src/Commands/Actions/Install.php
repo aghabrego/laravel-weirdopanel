@@ -19,32 +19,32 @@ class Install extends Command
 
         Artisan::call('vendor:publish', [
             '--provider' => WeirdoPanelServiceProvider::class,
-            '--tag' => 'easy-panel-styles'
+            '--tag' => 'weirdo-panel-styles'
         ]);
 
         Artisan::call('vendor:publish', [
             '--provider' => WeirdoPanelServiceProvider::class,
-            '--tag' => 'easy-panel-views'
+            '--tag' => 'weirdo-panel-views'
         ]);
 
         Artisan::call('vendor:publish', [
             '--provider' => WeirdoPanelServiceProvider::class,
-            '--tag' => 'easy-panel-config'
+            '--tag' => 'weirdo-panel-config'
         ]);
 
         Artisan::call('vendor:publish', [
             '--provider' => WeirdoPanelServiceProvider::class,
-            '--tag' => 'easy-panel-cruds'
+            '--tag' => 'weirdo-panel-cruds'
         ]);
 
         Artisan::call('vendor:publish', [
             '--provider' => WeirdoPanelServiceProvider::class,
-            '--tag' => 'easy-panel-lang'
+            '--tag' => 'weirdo-panel-lang'
         ]);
 
         Artisan::call('vendor:publish', [
             '--provider' => WeirdoPanelServiceProvider::class,
-            '--tag' => 'easy-panel-migration'
+            '--tag' => 'weirdo-panel-migration'
         ]);
 
         Artisan::call('vendor:publish', [

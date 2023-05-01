@@ -11,13 +11,15 @@ class UserProviderFacadeTest extends TestCase
     use RefreshDatabase;
 
     /** @test * */
-    public function find_a_real_user_by_id(){
+    public function find_a_real_user_by_id()
+    {
         $userFoundByFacade = UserProviderFacade::findUser($this->user->id);
         $this->assertEquals($userFoundByFacade->name, $this->user->name);
     }
 
     /** @test * */
-    public function make_an_admin_with_provider(){
+    public function make_an_admin_with_provider()
+    {
         $id = $this->user->id;
         $result = UserProviderFacade::makeAdmin($id);
         $this->assertTrue((bool) $this->user->panelAdmin()->exists());
@@ -25,7 +27,8 @@ class UserProviderFacadeTest extends TestCase
     }
 
     /** @test * */
-    public function remove_an_admin_with_provider(){
+    public function remove_an_admin_with_provider()
+    {
         $id = $this->user->id;
         UserProviderFacade::makeAdmin($id);
         $this->assertTrue((bool) $this->user->panelAdmin()->exists());
@@ -34,7 +37,8 @@ class UserProviderFacadeTest extends TestCase
     }
 
     /** @test * */
-    public function get_admins_list(){
+    public function get_admins_list()
+    {
         $id = $this->user->id;
         UserProviderFacade::makeAdmin($id);
         $adminsId = UserProviderFacade::getAdmins()->pluck('id');
@@ -42,14 +46,16 @@ class UserProviderFacadeTest extends TestCase
     }
 
     /** @test * */
-    public function user_can_be_a_super_admin(){
+    public function user_can_be_a_super_admin()
+    {
         $id = $this->user->id;
         UserProviderFacade::makeAdmin($id, true);
         $this->assertTrue((bool) $this->user->panelAdmin()->where('is_superuser', 1)->exists());
     }
 
     /** @test * */
-    public function user_cannot_be_admin_twice(){
+    public function user_cannot_be_admin_twice()
+    {
         $id = $this->user->id;
         UserProviderFacade::makeAdmin($id);
         $result = UserProviderFacade::makeAdmin($id);
