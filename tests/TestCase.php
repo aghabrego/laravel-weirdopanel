@@ -2,16 +2,17 @@
 
 namespace WeirdoPanelTest;
 
-use WeirdoPanel\WeirdoPanelServiceProvider;
-use WeirdoPanel\Parsers\StubParser;
-use WeirdoPanelTest\Dependencies\User;
 use Faker\Factory;
+use WeirdoPanel\Parsers\StubParser;
 use Illuminate\Support\Facades\Hash;
-use Iya30n\DynamicAcl\Providers\DynamicAclServiceProvider;
-use Javoscript\MacroableModels\MacroableModelsServiceProvider;
 use Livewire\LivewireServiceProvider;
+use WeirdoPanelTest\Dependencies\User;
+use WeirdoPanel\WeirdoPanelServiceProvider;
+use Orchestra\Testbench\TestCase as _TestCase;
+use DynamicAcl\Providers\DynamicAclServiceProvider;
+use Javoscript\MacroableModels\MacroableModelsServiceProvider;
 
-abstract class TestCase extends \Orchestra\Testbench\TestCase
+abstract class TestCase extends _TestCase
 {
     /**
      * @var \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
@@ -28,7 +29,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
         parent::setUp();
 
         $this->loadMigrationsFrom(__DIR__.'/Dependencies/database/migrations');
-        $this->loadMigrationsFrom(__DIR__.'/../vendor/iya30n/dynamic-acl/database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../vendor/weirdo/dynamic-acl/database/migrations');
         $this->setUser();
         $this->setParser();
         

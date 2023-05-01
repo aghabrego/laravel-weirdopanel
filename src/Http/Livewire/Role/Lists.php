@@ -4,7 +4,7 @@ namespace WeirdoPanel\Http\Livewire\Role;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use Iya30n\DynamicAcl\Models\Role;
+use DynamicAcl\Models\Role;
 
 class Lists extends Component
 {

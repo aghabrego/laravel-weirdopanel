@@ -2,8 +2,8 @@
 
 namespace WeirdoPanel\Http\Livewire\Role;
 
-use Iya30n\DynamicAcl\ACL;
-use Iya30n\DynamicAcl\Models\Role;
+use DynamicAcl\ACL;
+use DynamicAcl\Models\Role;
 use Livewire\Component;
 
 class Update extends Component

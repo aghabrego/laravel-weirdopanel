@@ -5,7 +5,7 @@ namespace WeirdoPanel\Commands\Actions;
 use WeirdoPanel\WeirdoPanelServiceProvider;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
-use Iya30n\DynamicAcl\Providers\DynamicAclServiceProvider;
+use DynamicAcl\Providers\DynamicAclServiceProvider;
 
 class Install extends Command
 {

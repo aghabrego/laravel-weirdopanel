@@ -3,8 +3,8 @@
 namespace WeirdoPanel\Http\Livewire\Role;
 
 use Livewire\Component;
-use Iya30n\DynamicAcl\ACL;
-use Iya30n\DynamicAcl\Models\Role;
+use DynamicAcl\ACL;
+use DynamicAcl\Models\Role;
 
 class Create extends Component
 {

@@ -3,7 +3,7 @@
 namespace WeirdoPanel\Support\User;
 
 use App\Models\User;
-use Iya30n\DynamicAcl\Models\Role;
+use DynamicAcl\Models\Role;
 
 class UserProvider
 {

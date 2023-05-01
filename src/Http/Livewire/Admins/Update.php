@@ -3,7 +3,7 @@
 namespace WeirdoPanel\Http\Livewire\Admins;
 
 use WeirdoPanel\Support\Contract\UserProviderFacade;
-use Iya30n\DynamicAcl\Models\Role;
+use DynamicAcl\Models\Role;
 use Livewire\Component;
 
 class Update extends Component

@@ -3,7 +3,7 @@
 namespace WeirdoPanel\Http\Livewire\Role;
 
 use Livewire\Component;
-use Iya30n\DynamicAcl\Models\Role;
+use DynamicAcl\Models\Role;
 
 class Single extends Component
 {
