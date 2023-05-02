@@ -33,19 +33,23 @@ class Update extends Component
         $this->setSelectedAccess($role->permissions);
     }
 
-    /** 
+    /**
      * this method checks if whole checkboxes checked, set value true for SelectAll checkbox
-     * 
+     *
      * @param string $key
-     * 
+     *
      * @param string $dashKey
      */
     public function checkSelectedAll($key, $dashKey)
     {
-        $selectedRoutes = array_filter($this->access[$dashKey]);
+        $selectedRoutes = is_array($this->access[$dashKey]) ? array_filter($this->access[$dashKey]) : $this->access[$dashKey];
 
         // we don't have delete route in cruds but we have a button for it. that's why i added 1
-        $this->selectedAll[$dashKey] = count($selectedRoutes) == count($this->permissions[$key]) + 1;
+        if (is_array($selectedRoutes)) {
+            $this->selectedAll[$dashKey] = count($selectedRoutes) == count($this->permissions[$key]) + 1;
+        } else {
+            $this->selectedAll[$dashKey] = $selectedRoutes;
+        }
     }
 
     public function updated($input)
