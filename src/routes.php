@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', "admin::home")->name('home');
@@ -67,6 +68,6 @@ Route::prefix('role')->middleware('dynamicAcl')->name('role.')->group(function (
 
 Route::prefix('admins')->middleware('dynamicAcl')->name('admins.')->group(function (){
     Route::get('/', \WeirdoPanel\Http\Livewire\Admins\Lists::class)->name('lists');
-    // Route::get('/create', \WeirdoPanel\Http\Livewire\Admins\Create::class)->name('create');
-     Route::get('/update/{admin}', \WeirdoPanel\Http\Livewire\Admins\Update::class)->name('update');
+    Route::get('/create', \WeirdoPanel\Http\Livewire\Admins\Create::class)->name('create');
+    Route::get('/update/{admin}', \WeirdoPanel\Http\Livewire\Admins\Update::class)->name('update');
 });
