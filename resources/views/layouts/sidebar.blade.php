@@ -40,6 +40,15 @@
                 </li>
                 @endif
 
+                @if(hasPermission(getRouteName().'.users.lists', true))
+                <li class="sidebar-item @isActive([getRouteName().'.users.lists', getRouteName().'.users.create', getRouteName().'.users.update'], 'selected')">
+                    <a class="sidebar-link @isActive([getRouteName().'.users.lists', getRouteName().'.users.create', getRouteName().'.users.update'], 'active') " href="@route(getRouteName().'.users.lists')" aria-expanded="false">
+                        <i data-feather="users" class="feather-icon"></i>
+                        <span class="hide-menu">{{ __('Users Manager') }}</span>
+                    </a>
+                </li>
+                @endif
+
                 @if(hasPermission(getRouteName().'.admins.lists', true))
                 <li class="sidebar-item @isActive([getRouteName().'.admins.lists', getRouteName().'.admins.update'], 'selected')">
                     <a class="sidebar-link @isActive([getRouteName().'.admins.lists'], 'active') " href="@route(getRouteName().'.admins.lists')" aria-expanded="false">

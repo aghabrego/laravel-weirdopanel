@@ -115,6 +115,11 @@ class WeirdoPanelServiceProvider extends ServiceProvider
 
         Livewire::component('admin::livewire.admins.single', Http\Livewire\Admins\Single::class);
         Livewire::component('admin::livewire.admins.update', Http\Livewire\Admins\Update::class);
+
+        Livewire::component('admin::livewire.user.single', Http\Livewire\User\Single::class);
+        Livewire::component('admin::livewire.user.create', Http\Livewire\User\Create::class);
+        Livewire::component('admin::livewire.user.update', Http\Livewire\User\Update::class);
+        Livewire::component('admin::livewire.user.lists', Http\Livewire\User\Lists::class);
     }
 
     private function mergePublishes()
