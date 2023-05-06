@@ -38,7 +38,7 @@ class Read extends Component
     {
         $data = {{ modelName }}::query();
 
-        $instance = getCrudConfig('{{ model }}');
+        $instance = getCrudConfig('{{ modelName }}');
         if($instance->searchable()){
             $array = (array) $instance->searchable();
             $data->where(function (Builder $query) use ($array){
