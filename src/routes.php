@@ -69,7 +69,7 @@ Route::prefix('role')->middleware('dynamicAcl')->name('role.')->group(function (
 Route::prefix('users')->middleware('dynamicAcl')->name('users.')->group(function (){
     Route::get('/', \WeirdoPanel\Http\Livewire\User\Lists::class)->name('lists');
     Route::get('/create', \WeirdoPanel\Http\Livewire\User\Create::class)->name('create');
-    Route::get('/update/{role}', \WeirdoPanel\Http\Livewire\User\Update::class)->name('update');
+    Route::get('/update/{user}', \WeirdoPanel\Http\Livewire\User\Update::class)->name('update');
 });
 
 Route::prefix('admins')->middleware('dynamicAcl')->name('admins.')->group(function (){

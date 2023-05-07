@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Livewire\Admin\User;
+namespace WeirdoPanel\Http\Livewire\User;
 
-use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 

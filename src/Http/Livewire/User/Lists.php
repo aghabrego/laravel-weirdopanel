@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\User;
+namespace WeirdoPanel\Http\Livewire\User;
 
 use Livewire\Component;
 use Livewire\WithPagination;
