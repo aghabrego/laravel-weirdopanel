@@ -34,9 +34,14 @@ class Lists extends Component
         $this->sortType = $sort;
     }
 
+    public function getModel()
+    {
+        return app('weirdo_panel.user_model');
+    }
+
     public function render()
     {
-        $userModel = config()->has('weirdo_panel.user_model') ? config('weirdo_panel.user_model') : config('auth.providers.users.model');
+        $userModel = $this->getModel();
         $data = $userModel->query();
         $instance = getCrudConfig('User');
         if($instance->searchable()){

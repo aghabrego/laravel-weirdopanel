@@ -25,13 +25,18 @@ class Create extends Component
         $this->validateOnly($input);
     }
 
+    public function getModel()
+    {
+        return app('weirdo_panel.user_model');
+    }
+
     public function create()
     {
         if($this->getRules())
             $this->validate();
 
         $this->dispatchBrowserEvent('show-message', ['type' => 'success', 'message' => __('CreatedMessage', ['name' => __('User') ])]);
-        $userModel = config()->has('weirdo_panel.user_model') ? config('weirdo_panel.user_model') : config('auth.providers.users.model');
+        $userModel = $this->getModel();
         $userModel->create([
             'name' => $this->name,
             'email' => $this->email,
