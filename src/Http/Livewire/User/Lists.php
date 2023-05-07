@@ -5,6 +5,7 @@ namespace WeirdoPanel\Http\Livewire\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Database\Eloquent\Builder;
+use WeirdoPanel\Support\Contract\UserProviderFacade;
 
 class Lists extends Component
 {
@@ -26,6 +27,11 @@ class Lists extends Component
         // Nothing ..
     }
 
+    public function searchable()
+    {
+        return ['name', 'email'];
+    }
+
     public function sort($column)
     {
         $sort = $this->sortType == 'desc' ? 'asc' : 'desc';
@@ -34,18 +40,13 @@ class Lists extends Component
         $this->sortType = $sort;
     }
 
-    public function getModel()
-    {
-        return app(config('weirdo_panel.user_model'));
-    }
-
     public function render()
     {
-        $userModel = $this->getModel();
+        $userModel = UserProviderFacade::getUserModelInstance();
         $data = $userModel->query();
-        $instance = getCrudConfig('User');
-        if($instance->searchable()){
-            $array = (array) $instance->searchable();
+
+        if ($this->search) {
+            $array = $this->searchable();
             $data->where(function (Builder $query) use ($array){
                 foreach ($array as $item) {
                     if(!\Str::contains($item, '.')) {
@@ -68,8 +69,8 @@ class Lists extends Component
 
         $data = $data->paginate(config('weirdo_panel.pagination_count', 15));
 
-        return view('livewire.admin.user.lists', [
+        return view('admin::livewire.user.lists', [
             'users' => $data
-        ])->layout('admin::layouts.app', ['title' => __(\Str::plural('User')) ]);
+        ])->layout('admin::layouts.app', ['title' => __('ListTitle', ['name' => __('Users')])]);
     }
 }

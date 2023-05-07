@@ -3,7 +3,9 @@
 namespace WeirdoPanel\Http\Livewire\User;
 
 use Livewire\Component;
+use DynamicAcl\Models\Role;
 use Livewire\WithFileUploads;
+use WeirdoPanel\Support\Contract\UserProviderFacade;
 
 class Update extends Component
 {
@@ -13,7 +15,8 @@ class Update extends Component
     public $name;
     public $email;
     public $password;
-    public $roles;
+    public $roles = [];
+    public $selectedRoles = [];
 
     protected $rules = [
         'name' => 'required',
@@ -21,12 +24,15 @@ class Update extends Component
         'password' => 'sometimes|required|min:8',
     ];
 
-    public function mount($User){
-        $this->user = $User;
+    public function mount($user)
+    {
+        $this->roles = Role::where('name', '<>', 'full_access')->get();
+        $admin = UserProviderFacade::findUser($user);
+        $this->user = $admin;
         $this->name = $this->user->name;
         $this->email = $this->user->email;
         $this->password = $this->user->password;
-        $this->roles = $this->user->roles;
+        $this->selectedRoles = $admin->roles()->pluck('id');
     }
 
     public function updated($input)
@@ -57,7 +63,7 @@ class Update extends Component
 
     public function render()
     {
-        return view('livewire.admin.user.update', [
+        return view('admin::livewire.user.update', [
             'user' => $this->user
         ])->layout('admin::layouts.app', ['title' => __('UpdateTitle', ['name' => __('User') ])]);
     }

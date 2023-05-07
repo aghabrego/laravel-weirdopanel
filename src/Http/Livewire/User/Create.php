@@ -3,6 +3,7 @@
 namespace WeirdoPanel\Http\Livewire\User;
 
 use Livewire\Component;
+use DynamicAcl\Models\Role;
 use Livewire\WithFileUploads;
 
 class Create extends Component
@@ -12,12 +13,13 @@ class Create extends Component
     public $name;
     public $email;
     public $password;
-    public $roles;
-    
+    public $roles = [];
+    public $selectedRoles = [];
+
     protected $rules = [
         'name' => 'required',
         'email' => 'required|unique:users,email',
-        'password' => 'sometimes|required|min:8',        
+        'password' => 'sometimes|required|min:8',
     ];
 
     public function updated($input)
@@ -35,20 +37,26 @@ class Create extends Component
         if($this->getRules())
             $this->validate();
 
+        if ($this->selectedRoles[0] == "null")
+            $this->selectedRoles = [];
+
         $this->dispatchBrowserEvent('show-message', ['type' => 'success', 'message' => __('CreatedMessage', ['name' => __('User') ])]);
         $userModel = $this->getModel();
-        $userModel->create([
+        $user = $userModel->create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => $this->password,
         ]);
+        $user->roles()->sync($this->selectedRoles);
 
         $this->reset();
     }
 
     public function render()
     {
-        return view('livewire.admin.user.create')
+        $this->roles = Role::where('name', '<>', 'full_access')->get();
+
+        return view('admin::livewire.user.create')
             ->layout('admin::layouts.app', ['title' => __('CreateTitle', ['name' => __('User') ])]);
     }
 }

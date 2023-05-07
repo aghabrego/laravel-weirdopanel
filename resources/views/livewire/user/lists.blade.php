@@ -12,12 +12,11 @@
                     </ul>
 
                     <div class="row justify-content-between mt-4 mb-4">
-                        @if(getCrudConfig('User')->create && hasPermission(getRouteName().'.users.create', 1, 0))
+                        @if(hasPermission(getRouteName().'.users.create', true))
                         <div class="col-md-4 right-0">
                             <a href="@route(getRouteName().'.users.create')" class="btn btn-success">{{ __('CreateTitle', ['name' => __('User') ]) }}</a>
                         </div>
                         @endif
-                        @if(getCrudConfig('User')->searchable())
                         <div class="col-md-4">
                             <div class="input-group">
                                 <input type="text" class="form-control" @if(config('weirdo_panel.lazy_mode')) wire:model.lazy="search" @else wire:model="search" @endif placeholder="{{ __('Search') }}" value="{{ request('search') }}">
@@ -29,7 +28,6 @@
                                 </div>
                             </div>
                         </div>
-                        @endif
                     </div>
                 </div>
             </div>
@@ -40,16 +38,15 @@
                         <tr>
                             <th scope="col" style='cursor: pointer' wire:click="sort('name')"> <i class='fa @if($sortType == 'desc' and $sortColumn == 'name') fa-sort-amount-down ml-2 @elseif($sortType == 'asc' and $sortColumn == 'name') fa-sort-amount-up ml-2 @endif'></i> {{ __('Name') }} </th>
                             <th scope="col" style='cursor: pointer' wire:click="sort('email')"> <i class='fa @if($sortType == 'desc' and $sortColumn == 'email') fa-sort-amount-down ml-2 @elseif($sortType == 'asc' and $sortColumn == 'email') fa-sort-amount-up ml-2 @endif'></i> {{ __('Email') }} </th>
-                            <th scope="col" style='cursor: pointer' wire:click="sort('password')"> <i class='fa @if($sortType == 'desc' and $sortColumn == 'password') fa-sort-amount-down ml-2 @elseif($sortType == 'asc' and $sortColumn == 'password') fa-sort-amount-up ml-2 @endif'></i> {{ __('Password') }} </th>
-                            
-                            @if(getCrudConfig('User')->delete or getCrudConfig('User')->update)
+
+                            @if(hasPermission(getRouteName().'.users.create', true))
                                 <th scope="col">{{ __('Action') }}</th>
                             @endif
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($users as $user)
-                            @livewire('admin.user.single', [$user], key($user->id))
+                            @livewire('admin::livewire.user.single', ['user' => $user], key($user->id))
                         @endforeach
                     </tbody>
                 </table>

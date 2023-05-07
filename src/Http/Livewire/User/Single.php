@@ -9,9 +9,9 @@ class Single extends Component
 
     public $user;
 
-    public function mount($User)
+    public function mount($user)
     {
-        $this->user = $User;
+        $this->user = $user;
     }
 
     public function delete()
@@ -23,7 +23,7 @@ class Single extends Component
 
     public function render()
     {
-        return view('livewire.admin.user.single')
+        return view('admin::livewire.user.single')
             ->layout('admin::layouts.app');
     }
 }

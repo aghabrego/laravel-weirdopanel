@@ -13,7 +13,7 @@
     <form class="form-horizontal" wire:submit.prevent="create" enctype="multipart/form-data">
 
         <div class="card-body">
-                        <!-- Name Input -->
+            <!-- Name Input -->
             <div class='form-group'>
                 <label for='input-name' class='col-sm-2 control-label '> {{ __('Name') }}</label>
                 <input type='text' id='input-name' wire:model.lazy='name' class="form-control  @error('name') is-invalid @enderror" placeholder='Please enter the name' autocomplete='on'>
@@ -33,20 +33,21 @@
             </div>
             <!-- Roles Input -->
             <div class='form-group'>
-                <label for='input-roles' class='col-sm-2 control-label '> {{ __('Roles') }}</label>
-                <select id='input-roles' wire:model.lazy='roles' class="form-control  @error('roles') is-invalid @enderror">
-                    @foreach(getCrudConfig('User')->inputs()['roles']['select'] as $key => $value)
-                        <option value='{{ $key }}'>{{ $value }}</option>
+                <label for='input-roles' class='col-sm-2 control-label '>{{__('Select Roles')}}</label>
+                <select multiple class="form-control rounded @error('selectedRoles') is-invalid @enderror" wire:model="selectedRoles">
+                    <option value="null">{{__('Without Role')}}</option>
+                    @foreach($roles as $role)
+                        <option value="{{$role->id}}">{{$role->name}}</option>
                     @endforeach
                 </select>
-                @error('roles') <div class='invalid-feedback'>{{ $message }}</div> @enderror
+                @error('selectedRoles') <div class="invalid-feedback">{{ $message }}</div> @enderror
             </div>
 
         </div>
 
         <div class="card-footer">
             <button type="submit" class="btn btn-info ml-4">{{ __('Create') }}</button>
-            <a href="@route(getRouteName().'.users.read')" class="btn btn-default float-left">{{ __('Cancel') }}</a>
+            <a href="@route(getRouteName().'.users.lists')" class="btn btn-default float-left">{{ __('Cancel') }}</a>
         </div>
     </form>
 </div>

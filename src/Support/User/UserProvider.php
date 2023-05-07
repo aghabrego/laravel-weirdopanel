@@ -4,6 +4,7 @@ namespace WeirdoPanel\Support\User;
 
 use App\Models\User;
 use DynamicAcl\Models\Role;
+use WeirdoPanel\Support\Contract\UserProviderFacade;
 
 class UserProvider
 {
@@ -54,9 +55,14 @@ class UserProvider
         $user->panelAdmin()->delete();
     }
 
-    private function getUserModel()
+    public function getUserModel()
     {
         return config('weirdo_panel.user_model') ?? User::class;
+    }
+
+    public function getUserModelInstance()
+    {
+        return app(UserProviderFacade::getUserModel());
     }
 
     private function makeSuperAdminRole($user)
