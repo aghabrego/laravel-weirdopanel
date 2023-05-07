@@ -36,7 +36,7 @@ class Lists extends Component
 
     public function getModel()
     {
-        return app('weirdo_panel.user_model');
+        return app(config('weirdo_panel.user_model'));
     }
 
     public function render()
