@@ -5,6 +5,7 @@ namespace WeirdoPanel\Http\Livewire\User;
 use Livewire\Component;
 use DynamicAcl\Models\Role;
 use Livewire\WithFileUploads;
+use WeirdoPanel\Support\Contract\UserProviderFacade;
 
 class Create extends Component
 {
@@ -48,6 +49,8 @@ class Create extends Component
             'password' => $this->password,
         ]);
         $user->roles()->sync($this->selectedRoles);
+
+        UserProviderFacade::makeAdmin($user->id, false);
 
         $this->reset();
     }

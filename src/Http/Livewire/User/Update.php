@@ -52,13 +52,16 @@ class Update extends Component
 
         $this->dispatchBrowserEvent('show-message', ['type' => 'success', 'message' => __('UpdatedMessage', ['name' => __('User') ]) ]);
 
-        $this->user->update([
+        $user = $this->user->update([
             'name' => $this->name,
             'email' => $this->email,
             'password' => $this->password,
             'roles' => $this->roles,
             'user_id' => auth()->id(),
         ]);
+        $user->roles()->sync($this->selectedRoles);
+
+        UserProviderFacade::makeAdmin($user->id, false);
     }
 
     public function render()
