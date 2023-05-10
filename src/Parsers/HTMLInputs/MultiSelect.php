@@ -24,7 +24,7 @@ class MultiSelect extends BaseInput
             throw new Exception("Method {$method} doesn't exist on {$class} class.");
         }
 
-        $this->provider = "\\{$class}::{$method}()";
+        $this->provider = "\\{$class}::{$method}" . '($this)';
 
         return $this;
     }

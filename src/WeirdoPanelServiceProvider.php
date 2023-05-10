@@ -163,7 +163,10 @@ class WeirdoPanelServiceProvider extends ServiceProvider
 
     private function loadRelations()
     {
-        $model = !$this->app->runningUnitTests() ? config('weirdo_panel.user_model') : User::class;
+        $model = config('weirdo_panel.user_model');
+        if ($this->app->runningUnitTests() && class_exists(User::class)) {
+            $model = User::class;
+        }
 
         $model::resolveRelationUsing('panelAdmin', function ($userModel){
             return $userModel->hasOne(PanelAdmin::class)->latest();
