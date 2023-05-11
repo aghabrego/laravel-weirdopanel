@@ -33,6 +33,8 @@ return [
     // Admin panel routes prefix
     'route_prefix' => 'admin', //  http://localhost/admin
 
+    'disable_route_prefix_registration' => false,
+
     // Your own middlewares for easy panel routes.
     'additional_middlewares' => [],
 

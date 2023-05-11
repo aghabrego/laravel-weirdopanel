@@ -79,14 +79,16 @@ class WeirdoPanelServiceProvider extends ServiceProvider
         if(!$this->app->routesAreCached()) {
             $middlewares = array_merge(['web', 'isAdmin', 'LangChanger'], config('weirdo_panel.additional_middlewares'));
 
-            if (request()->has('email')) {
-                $user = UserProviderFacade::findUserForEmail(request()->get('email'));
+            if (config('weirdo_panel.disable_route_prefix_registration')) {
+                Route::prefix(config('weirdo_panel.route_prefix'))
+                    ->middleware($middlewares)
+                    ->name(getRouteName() . '.')
+                    ->group(__DIR__ . '/routes.php');
+            } else {
+                Route::middleware($middlewares)
+                    ->name(getRouteName() . '.')
+                    ->group(__DIR__ . '/routes.php');
             }
-
-            Route::prefix(config('weirdo_panel.route_prefix'))
-                ->middleware($middlewares)
-                ->name(getRouteName() . '.')
-                ->group(__DIR__ . '/routes.php');
         }
     }
 
