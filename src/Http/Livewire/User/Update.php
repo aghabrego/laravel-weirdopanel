@@ -50,18 +50,21 @@ class Update extends Component
         if($this->getRules())
             $this->validate($this->getRules());
 
+        if ($this->selectedRoles[0] == "null")
+            $this->selectedRoles = [];
+
         $this->dispatchBrowserEvent('show-message', ['type' => 'success', 'message' => __('UpdatedMessage', ['name' => __('User') ]) ]);
 
-        $user = $this->user->update([
+        $this->user->update([
             'name' => $this->name,
             'email' => $this->email,
             'password' => $this->password,
             'roles' => $this->roles,
             'user_id' => auth()->id(),
         ]);
-        $user->roles()->sync($this->selectedRoles);
+        $this->user->roles()->sync($this->selectedRoles);
 
-        UserProviderFacade::makeAdmin($user->id, false);
+        UserProviderFacade::makeAdmin($this->user->getKey(), false);
     }
 
     public function render()
