@@ -45,6 +45,12 @@ class Lists extends Component
         $userModel = UserProviderFacade::getUserModelInstance();
         $data = $userModel->query();
 
+        $user = auth()->user();
+        if (!$user->hasPermission('fullAccess')) {
+            $data->where('user_id', $user->getKey())
+                ->orWhere('id', $user->getKey());
+        }
+
         if ($this->search) {
             $array = $this->searchable();
             $data->where(function (Builder $query) use ($array){

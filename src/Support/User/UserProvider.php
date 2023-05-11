@@ -45,7 +45,13 @@ class UserProvider
 
     public function findUser($id)
     {
-        return $this->getUserModel()::query()->findOrFail($id);
+        $data = $this->getUserModel()::query();
+        $user = auth()->user();
+        if ($user && !$user->hasPermission('fullAccess')) {
+            $data->where('user_id', $user->getKey())->orWhere('id', $user->getKey());
+        }
+
+        return $data->findOrFail($id);
     }
 
     public function findUserForEmail($email)
