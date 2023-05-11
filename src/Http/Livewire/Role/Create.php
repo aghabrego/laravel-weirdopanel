@@ -45,7 +45,7 @@ class Create extends Component
 
         // we don't have delete route in cruds but we have a button for it. that's why i added 1
         if (is_array($selectedRoutes)) {
-            $this->selectedAll[$dashKey] = count($selectedRoutes) == count($this->permissions[$key]) + 1;
+            $this->selectedAll[$dashKey] = count($selectedRoutes) == count($this->permissionsData[$key]) + 1;
         } else {
             $this->selectedAll[$dashKey] = $selectedRoutes;
         }
