@@ -26,7 +26,7 @@ class Update extends Component
 
     public function mount($user)
     {
-        $this->roles = Role::where('name', '<>', 'full_access')->get();
+        $this->roles = Role::where('name', '<>', 'super_admin')->get();
         $admin = UserProviderFacade::findUser($user);
         $this->user = $admin;
         $this->name = $this->user->name;

@@ -47,6 +47,7 @@ class Create extends Component
             'name' => $this->name,
             'email' => $this->email,
             'password' => $this->password,
+            'user_id' => auth()->id(),
         ]);
         $user->roles()->sync($this->selectedRoles);
 
@@ -57,7 +58,7 @@ class Create extends Component
 
     public function render()
     {
-        $this->roles = Role::where('name', '<>', 'full_access')->get();
+        $this->roles = Role::where('name', '<>', 'super_admin')->get();
 
         return view('admin::livewire.user.create')
             ->layout('admin::layouts.app', ['title' => __('CreateTitle', ['name' => __('User') ])]);
