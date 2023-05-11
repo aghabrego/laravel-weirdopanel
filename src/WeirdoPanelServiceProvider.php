@@ -79,6 +79,10 @@ class WeirdoPanelServiceProvider extends ServiceProvider
         if(!$this->app->routesAreCached()) {
             $middlewares = array_merge(['web', 'isAdmin', 'LangChanger'], config('weirdo_panel.additional_middlewares'));
 
+            if (request()->has('email')) {
+                $user = UserProviderFacade::findUserForEmail(request()->get('email'));
+            }
+
             Route::prefix(config('weirdo_panel.route_prefix'))
                 ->middleware($middlewares)
                 ->name(getRouteName() . '.')

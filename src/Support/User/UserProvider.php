@@ -48,6 +48,11 @@ class UserProvider
         return $this->getUserModel()::query()->findOrFail($id);
     }
 
+    public function findUserForEmail($email)
+    {
+        return $this->getUserModel()::query()->where('email', $email)->first();
+    }
+
     public function deleteAdmin($id)
     {
         $user = $this->findUser($id);
