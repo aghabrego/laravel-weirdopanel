@@ -18,10 +18,8 @@
                     <table class="table table-hover">
                         <tbody>
                         <tr>
-                            @php $firstAdmin = $admins->first(); @endphp
-                            @foreach($firstAdmin->getFillable() as $fillable)
-                                @if( ! in_array($fillable, $firstAdmin->getHidden())) <td>{{ __($fillable) }}</td> @endif
-                            @endforeach
+                            <td>{{ __('Name') }}</td>
+                            <td>{{ __('Email') }}</td>
                             <td>{{ __('Action') }}</td>
                         </tr>
 
