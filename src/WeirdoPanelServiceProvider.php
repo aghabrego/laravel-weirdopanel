@@ -20,7 +20,7 @@ use WeirdoPanel\Commands\{Actions\PublishStubs,
     Actions\Uninstall};
 use WeirdoPanel\Http\Middleware\isAdmin;
 use WeirdoPanel\Http\Middleware\LangChanger;
-use WeirdoPanel\Support\Contract\{LangManager, UserProviderFacade, AuthFacade};
+use WeirdoPanel\Support\Contract\{LangManager, UserProviderFacade, AuthFacade, OrganizationFacade};
 use Illuminate\{Routing\Router, Support\Facades\Blade, Support\Facades\Route, Support\ServiceProvider};
 use Livewire\Livewire;
 use WeirdoPanel\Models\PanelAdmin;
@@ -93,6 +93,7 @@ class WeirdoPanelServiceProvider extends ServiceProvider
         AuthFacade::shouldProxyTo(config('weirdo_panel.auth_class'));
         UserProviderFacade::shouldProxyTo(config('weirdo_panel.admin_provider_class'));
         LangManager::shouldProxyTo(config('weirdo_panel.lang_manager_class'));
+        OrganizationFacade::shouldProxyTo(config('weirdo_panel.organization_provider_class'));
     }
 
     private function registerMiddlewareAlias()

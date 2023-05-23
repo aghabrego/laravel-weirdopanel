@@ -2,7 +2,6 @@
 
 namespace WeirdoPanel\Support\User;
 
-use App\Models\User;
 use DynamicAcl\Models\Role;
 use WeirdoPanel\Support\Contract\UserProviderFacade;
 
@@ -68,7 +67,7 @@ class UserProvider
 
     public function getUserModel()
     {
-        return config('weirdo_panel.user_model') ?? User::class;
+        return config('weirdo_panel.user_model');
     }
 
     public function getUserModelInstance()
