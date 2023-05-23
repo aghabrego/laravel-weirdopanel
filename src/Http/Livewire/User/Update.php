@@ -5,6 +5,7 @@ namespace WeirdoPanel\Http\Livewire\User;
 use Livewire\Component;
 use DynamicAcl\Models\Role;
 use Livewire\WithFileUploads;
+use WeirdoPanel\Support\Contract\OrganizationFacade;
 use WeirdoPanel\Support\Contract\UserProviderFacade;
 
 class Update extends Component
@@ -17,6 +18,8 @@ class Update extends Component
     public $password;
     public $roles = [];
     public $selectedRoles = [];
+    public $organizations = [];
+    public $selectedOrganizations = [];
 
     protected $rules = [
         'name' => 'required',
@@ -33,6 +36,10 @@ class Update extends Component
         $this->email = $this->user->email;
         $this->password = $this->user->password;
         $this->selectedRoles = $admin->roles()->pluck('id');
+
+        if (config('weirdo_panel.with_organization_model')) {
+            $this->selectedOrganizations = $admin->organizations()->pluck('organizations.id');
+        }
     }
 
     public function updated($input)
@@ -53,6 +60,9 @@ class Update extends Component
         if ($this->selectedRoles[0] == "null")
             $this->selectedRoles = [];
 
+        if ($this->selectedOrganizations[0] == "null")
+            $this->selectedOrganizations = [];
+
         $this->dispatchBrowserEvent('show-message', ['type' => 'success', 'message' => __('UpdatedMessage', ['name' => __('User') ]) ]);
 
         $this->user->update([
@@ -64,11 +74,19 @@ class Update extends Component
         ]);
         $this->user->roles()->sync($this->selectedRoles);
 
+        if (config('weirdo_panel.with_organization_model')) {
+            OrganizationFacade::makeOrganization($this->user->id, $this->selectedOrganizations);
+        }
+
         UserProviderFacade::makeAdmin($this->user->getKey(), false);
     }
 
     public function render()
     {
+        if (config('weirdo_panel.with_organization_model')) {
+            $this->organizations = OrganizationFacade::getOrganizations();
+        }
+
         return view('admin::livewire.user.update', [
             'user' => $this->user
         ])->layout('admin::layouts.app', ['title' => __('UpdateTitle', ['name' => __('User') ])]);

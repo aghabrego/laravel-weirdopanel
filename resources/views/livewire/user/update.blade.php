@@ -43,7 +43,19 @@
                 </select>
                 @error('selectedRoles') <div class="invalid-feedback">{{ $message }}</div> @enderror
             </div>
-
+            @if (config('weirdo_panel.with_organization_model'))
+                <!-- Organizations Input -->
+                <div class='form-group'>
+                    <label for='input-roles' class='col-sm-2 control-label '>{{__('Select Organizations')}}</label>
+                    <select multiple class="form-control rounded @error('selectedOrganizations') is-invalid @enderror" wire:model="selectedOrganizations">
+                        <option value="null">{{__('Without Organization')}}</option>
+                        @foreach($organizations as $organization)
+                            <option value="{{$organization->id}}">{{$organization->name}}</option>
+                        @endforeach
+                    </select>
+                    @error('selectedOrganizations') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+            @endif
 
         </div>
 

@@ -15,7 +15,7 @@ return [
     'user_model' => file_exists(app_path('User.php')) ? App\User::class : App\Models\User::class,
 
     // Model verification of organizations
-    'with_organization_model' => (file_exists(app_path('Organization.php')) && file_exists(app_path('Models\Organization.php'))),
+    'with_organization_model' => (file_exists(app_path('Organization.php')) || file_exists(app_path('Models/Organization.php'))),
 
     // Organization model
     'organization_model' => file_exists(app_path('Organization.php')) ? App\Organization::class : App\Models\Organization::class,
