@@ -133,7 +133,7 @@ class MiddlewareTest extends TestCase
     private function addRouteWithAdminMiddleware()
     {
         \Illuminate\Support\Facades\Route::get('/test', function () {
-            dd('ok');
+            //
         })->middleware([isAdmin::class, LangChanger::class]);
     }
 }
