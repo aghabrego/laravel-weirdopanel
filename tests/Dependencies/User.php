@@ -12,4 +12,9 @@ class User extends \Illuminate\Foundation\Auth\User
 
     protected $casts = ['is_superuser'];
     public $timestamps = false;
+
+    public function hasPermission($routeName, $withAcl, $withPolicy = false, $entity = [])
+    {
+        return hasPermission($routeName, $withAcl, $withPolicy, $entity);
+    }
 }
