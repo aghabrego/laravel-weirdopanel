@@ -23,7 +23,7 @@ class Create extends Component
     protected $rules = [
         'name' => 'required',
         'email' => 'required|unique:users,email',
-        'password' => 'sometimes|required|min:8',
+        'password' => 'required|min:8',
     ];
 
     public function updated($input)
@@ -41,10 +41,10 @@ class Create extends Component
         if($this->getRules())
             $this->validate();
 
-        if ($this->selectedRoles[0] == "null")
+        if (isset($this->selectedRoles[0]) && $this->selectedRoles[0] == "null")
             $this->selectedRoles = [];
 
-        if ($this->selectedOrganizations[0] == "null")
+        if (isset($this->selectedOrganizations[0]) && $this->selectedOrganizations[0] == "null")
             $this->selectedOrganizations = [];
 
         $this->dispatchBrowserEvent('show-message', ['type' => 'success', 'message' => __('CreatedMessage', ['name' => __('User') ])]);

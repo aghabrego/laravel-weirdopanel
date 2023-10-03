@@ -24,7 +24,7 @@ class Update extends Component
     protected $rules = [
         'name' => 'required',
         'email' => 'required|unique:users,email',
-        'password' => 'sometimes|required|min:8',
+        'password' => 'nullable|string|min:8',
     ];
 
     public function mount($user)
@@ -34,7 +34,7 @@ class Update extends Component
         $this->user = $admin;
         $this->name = $this->user->name;
         $this->email = $this->user->email;
-        $this->password = $this->user->password;
+        $this->password = null;
         $this->selectedRoles = $admin->roles()->pluck('id');
 
         if (config('weirdo_panel.with_organization_model')) {
@@ -57,10 +57,10 @@ class Update extends Component
         if($this->getRules())
             $this->validate($this->getRules());
 
-        if ($this->selectedRoles[0] == "null")
+        if (isset($this->selectedRoles[0]) && $this->selectedRoles[0] == "null")
             $this->selectedRoles = [];
 
-        if ($this->selectedOrganizations[0] == "null")
+        if (isset($this->selectedOrganizations[0]) && $this->selectedOrganizations[0] == "null")
             $this->selectedOrganizations = [];
 
         $this->dispatchBrowserEvent('show-message', ['type' => 'success', 'message' => __('UpdatedMessage', ['name' => __('User') ]) ]);
