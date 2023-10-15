@@ -9,9 +9,9 @@ class Single extends Component
 
     public $personalaccesstoken;
 
-    public function mount($PersonalAccessToken)
+    public function mount($personalaccesstoken)
     {
-        $this->personalaccesstoken = $PersonalAccessToken;
+        $this->personalaccesstoken = $personalaccesstoken;
     }
 
     public function delete()

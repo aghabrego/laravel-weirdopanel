@@ -42,7 +42,7 @@
                     </thead>
                     <tbody>
                         @foreach($personalaccesstokens as $personalaccesstoken)
-                            @livewire('admin::livewire.personalaccesstoken.single', ['personalaccesstoken' => $personalaccesstoken], key($personalaccesstoken->id))
+                            @livewire('admin::livewire.personalaccess.single', ['personalaccesstoken' => $personalaccesstoken], key($personalaccesstoken->id))
                         @endforeach
                     </tbody>
                 </table>
