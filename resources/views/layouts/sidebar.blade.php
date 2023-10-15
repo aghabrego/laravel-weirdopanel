@@ -58,6 +58,15 @@
                 </li>
                 @endif
 
+                @if(hasPermission(getRouteName().'.personalaccesstoken.read', true))
+                <li class="sidebar-item @isActive([getRouteName().'.personalaccesstoken.read'], 'selected')">
+                    <a class="sidebar-link @isActive([getRouteName().'.personalaccesstoken.read'], 'active') " href="@route(getRouteName().'.personalaccesstoken.lists')" aria-expanded="false">
+                        <i data-feather="user" class="feather-icon"></i>
+                        <span class="hide-menu">{{ __('Admin Manager') }}</span>
+                    </a>
+                </li>
+                @endif
+
                 @include('admin::layouts.child-sidebar-menu')
 
 

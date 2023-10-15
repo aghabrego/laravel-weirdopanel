@@ -87,4 +87,14 @@ class UserProvider
         $role->users()->sync([$user->id]);
     }
 
+    public function getPersonalAccessTokenModel()
+    {
+        return config('weirdo_panel.personal_access_token_model');
+    }
+
+    public function getPersonalAccessTokenInstance()
+    {
+        return app(UserProviderFacade::getPersonalAccessTokenModel());
+    }
+
 }

@@ -14,6 +14,9 @@ return [
     // Your user Model
     'user_model' => file_exists(app_path('User.php')) ? App\User::class : App\Models\User::class,
 
+    // Your user Model
+    'personal_access_token_model' => file_exists(app_path('Personalaccesstoken.php')) ? App\Personalaccesstoken::class : App\Models\Personalaccesstoken::class,
+
     // Model verification of organizations
     'with_organization_model' => (file_exists(app_path('Organization.php')) || file_exists(app_path('Models/Organization.php'))),
 
@@ -50,4 +53,9 @@ return [
 
     // Lazy validation for Livewire components
     'lazy_mode' => true,
+
+    // License expiration check
+    'custom_remote_license_verification' => [
+        'url_base' => env('APP_REMOTE_LICENSE', 'http://localhost'),
+    ],
 ];
