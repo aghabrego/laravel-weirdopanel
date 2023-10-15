@@ -8,7 +8,7 @@ use Livewire\WithPagination;
 use Illuminate\Database\Eloquent\Builder;
 use WeirdoPanel\Support\Contract\UserProviderFacade;
 
-class Read extends Component
+class Lists extends Component
 {
     use WithPagination;
 
@@ -68,7 +68,7 @@ class Read extends Component
 
         $data = $data->paginate(config('weirdo_panel.pagination_count', 15));
 
-        return view('admin::livewire.personalaccesstoken.read', [
+        return view('admin::livewire.personalaccesstoken.lists', [
             'personalaccesstokens' => $data
         ])->layout('admin::layouts.app', ['title' => __(Str::plural('Personalaccesstoken')) ]);
     }
