@@ -154,7 +154,7 @@ class Create extends Component
 
     public function render()
     {
-        return view('livewire.admin.personalaccesstoken.create')
+        return view('admin::livewire.personalaccesstoken.create')
             ->layout('admin::layouts.app', ['title' => __('CreateTitle', ['name' => __('Personalaccesstoken') ])]);
     }
 }

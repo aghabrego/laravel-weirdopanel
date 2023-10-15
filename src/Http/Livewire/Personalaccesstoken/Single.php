@@ -23,7 +23,7 @@ class Single extends Component
 
     public function render()
     {
-        return view('livewire.admin.personalaccesstoken.single')
+        return view('admin::livewire.personalaccesstoken.single')
             ->layout('admin::layouts.app');
     }
 }

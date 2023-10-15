@@ -68,7 +68,7 @@ class Read extends Component
 
         $data = $data->paginate(config('weirdo_panel.pagination_count', 15));
 
-        return view('livewire.admin.personalaccesstoken.read', [
+        return view('admin::livewire.personalaccesstoken.read', [
             'personalaccesstokens' => $data
         ])->layout('admin::layouts.app', ['title' => __(Str::plural('Personalaccesstoken')) ]);
     }
