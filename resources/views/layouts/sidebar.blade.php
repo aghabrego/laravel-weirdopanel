@@ -58,10 +58,10 @@
                 </li>
                 @endif
 
-                @if(hasPermission(getRouteName().'.personalaccesstoken.read', true))
-                <li class="sidebar-item @isActive([getRouteName().'.personalaccesstoken.read'], 'selected')">
-                    <a class="sidebar-link @isActive([getRouteName().'.personalaccesstoken.read'], 'active') " href="@route(getRouteName().'.personalaccesstoken.read')" aria-expanded="false">
-                        <i data-feather="user" class="feather-icon"></i>
+                @if(hasPermission(getRouteName().'.personalaccesstoken.lists', true))
+                <li class="sidebar-item @isActive([getRouteName().'.personalaccesstoken.lists', getRouteName().'.personalaccesstoken.create'], 'selected')">
+                    <a class="sidebar-link @isActive([getRouteName().'.personalaccesstoken.lists', getRouteName().'.personalaccesstoken.create'], 'active') " href="@route(getRouteName().'.personalaccesstoken.lists')" aria-expanded="false">
+                        <i data-feather="token" class="feather-icon"></i>
                         <span class="hide-menu">{{ __('Tokens management') }}</span>
                     </a>
                 </li>

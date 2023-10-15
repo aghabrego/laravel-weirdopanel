@@ -4,7 +4,7 @@
         <div class="px-2 mt-4">
             <ul class="breadcrumb mt-3 py-3 px-4 rounded">
                 <li class="breadcrumb-item"><a href="@route(getRouteName().'.home')" class="text-decoration-none">{{ __('Dashboard') }}</a></li>
-                <li class="breadcrumb-item"><a href="@route(getRouteName().'.personalaccesstoken.read')" class="text-decoration-none">{{ __(\Illuminate\Support\Str::plural('Personalaccesstoken')) }}</a></li>
+                <li class="breadcrumb-item"><a href="@route(getRouteName().'.personalaccesstoken.lists')" class="text-decoration-none">{{ __(\Illuminate\Support\Str::plural('Personalaccesstoken')) }}</a></li>
                 <li class="breadcrumb-item active">{{ __('Create') }}</li>
             </ul>
         </div>
@@ -39,7 +39,7 @@
 
         <div class="card-footer">
             <button type="submit" class="btn btn-info ml-4">{{ __('Create') }}</button>
-            <a href="@route(getRouteName().'.personalaccesstoken.read')" class="btn btn-default float-left">{{ __('Cancel') }}</a>
+            <a href="@route(getRouteName().'.personalaccesstoken.lists')" class="btn btn-default float-left">{{ __('Cancel') }}</a>
         </div>
     </form>
     <div x-show="modalTokenIsOpen" class="cs-modal animate__animated animate__fadeIn">
