@@ -12,9 +12,9 @@
                     </ul>
 
                     <div class="row justify-content-between mt-4 mb-4">
-                        @if(hasPermission(getRouteName().'.personalaccesstoken.create', 1, 1))
+                        @if(hasPermission(getRouteName().'.personalaccesstokens.create', 1, 1))
                         <div class="col-md-4 right-0">
-                            <a href="@route(getRouteName().'.personalaccesstoken.create')" class="btn btn-success">{{ __('CreateTitle', ['name' => __('Personalaccesstoken') ]) }}</a>
+                            <a href="@route(getRouteName().'.personalaccesstokens.create')" class="btn btn-success">{{ __('CreateTitle', ['name' => __('Personalaccesstoken') ]) }}</a>
                         </div>
                         @endif
                         <div class="col-md-4">

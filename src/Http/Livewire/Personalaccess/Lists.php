@@ -1,6 +1,6 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\Personalaccesstoken;
+namespace WeirdoPanel\Http\Livewire\Personalaccess;
 
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -68,7 +68,7 @@ class Lists extends Component
 
         $data = $data->paginate(config('weirdo_panel.pagination_count', 15));
 
-        return view('admin::livewire.personalaccesstoken.lists', [
+        return view('admin::livewire.personalaccess.lists', [
             'personalaccesstokens' => $data
         ])->layout('admin::layouts.app', ['title' => __(Str::plural('Personalaccesstoken')) ]);
     }

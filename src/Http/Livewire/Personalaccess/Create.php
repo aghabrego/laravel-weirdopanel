@@ -1,6 +1,6 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\Personalaccesstoken;
+namespace WeirdoPanel\Http\Livewire\Personalaccess;
 
 use Livewire\Component;
 use Illuminate\Support\Arr;
@@ -154,7 +154,7 @@ class Create extends Component
 
     public function render()
     {
-        return view('admin::livewire.personalaccesstoken.create')
+        return view('admin::livewire.personalaccess.create')
             ->layout('admin::layouts.app', ['title' => __('CreateTitle', ['name' => __('Personalaccesstoken') ])]);
     }
 }

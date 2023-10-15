@@ -2,7 +2,7 @@
     <td class="">{{ $personalaccesstoken->name }}</td>
 
     <td class="d-flex">
-        @if(hasPermission(getRouteName().'.personalaccesstoken.delete', 1, 1, $personalaccesstoken))
+        @if(hasPermission(getRouteName().'.personalaccesstokens.delete', 1, 1, $personalaccesstoken))
             <div class="justify-content-center p-0">
                 <button @click.prevent="modalIsOpen = true" class="btn text-danger mt-1">
                     <i class="icon-trash"></i>

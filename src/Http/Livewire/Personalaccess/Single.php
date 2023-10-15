@@ -1,6 +1,6 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\Personalaccesstoken;
+namespace WeirdoPanel\Http\Livewire\Personalaccess;
 
 use Livewire\Component;
 
@@ -23,7 +23,7 @@ class Single extends Component
 
     public function render()
     {
-        return view('admin::livewire.personalaccesstoken.single')
+        return view('admin::livewire.personalaccess.single')
             ->layout('admin::layouts.app');
     }
 }
