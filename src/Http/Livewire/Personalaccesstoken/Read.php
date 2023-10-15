@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Personalaccesstoken;
+namespace WeirdoPanel\Http\Livewire\Personalaccesstoken;
 
 use Livewire\Component;
 use Illuminate\Support\Str;

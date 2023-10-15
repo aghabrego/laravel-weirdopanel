@@ -77,3 +77,8 @@ Route::prefix('admins')->middleware('dynamicAcl')->name('admins.')->group(functi
     Route::get('/create', \WeirdoPanel\Http\Livewire\Admins\Create::class)->name('create');
     Route::get('/update/{admin}', \WeirdoPanel\Http\Livewire\Admins\Update::class)->name('update');
 });
+
+Route::prefix('personalaccesstoken')->middleware('dynamicAcl')->name('personalaccesstoken.')->group(function (){
+    Route::get('/', \WeirdoPanel\Http\Livewire\Personalaccesstoken\Read::class)->name('read');
+    Route::get('/create', \WeirdoPanel\Http\Livewire\Personalaccesstoken\Create::class)->name('create');
+});
