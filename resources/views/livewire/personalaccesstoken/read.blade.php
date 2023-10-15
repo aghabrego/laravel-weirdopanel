@@ -12,12 +12,11 @@
                     </ul>
 
                     <div class="row justify-content-between mt-4 mb-4">
-                        @if(getCrudConfig('Personalaccesstoken')->create && hasPermission(getRouteName().'.personalaccesstoken.create', 1, 1))
+                        @if(hasPermission(getRouteName().'.personalaccesstoken.create', 1, 1))
                         <div class="col-md-4 right-0">
                             <a href="@route(getRouteName().'.personalaccesstoken.create')" class="btn btn-success">{{ __('CreateTitle', ['name' => __('Personalaccesstoken') ]) }}</a>
                         </div>
                         @endif
-                        @if(getCrudConfig('Personalaccesstoken')->searchable())
                         <div class="col-md-4">
                             <div class="input-group">
                                 <input type="text" class="form-control" @if(config('weirdo_panel.lazy_mode')) wire:model.lazy="search" @else wire:model="search" @endif placeholder="{{ __('Search') }}" value="{{ request('search') }}">
@@ -29,7 +28,6 @@
                                 </div>
                             </div>
                         </div>
-                        @endif
                     </div>
                 </div>
             </div>
@@ -39,10 +37,7 @@
                     <thead>
                         <tr>
                             <th scope="col" style='cursor: pointer' wire:click="sort('name')"> <i class='fa @if($sortType == 'desc' and $sortColumn == 'name') fa-sort-amount-down ml-2 @elseif($sortType == 'asc' and $sortColumn == 'name') fa-sort-amount-up ml-2 @endif'></i> {{ __('Nombre') }} </th>
-                            
-                            @if(getCrudConfig('Personalaccesstoken')->delete or getCrudConfig('Personalaccesstoken')->update)
-                                <th scope="col">{{ __('Action') }}</th>
-                            @endif
+                            <th scope="col">{{ __('Action') }}</th>
                         </tr>
                     </thead>
                     <tbody>

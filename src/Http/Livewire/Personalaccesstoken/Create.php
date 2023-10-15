@@ -69,7 +69,7 @@ class Create extends Component
 
     public function searchable()
     {
-        return ['name', 'email'];
+        return ['name'];
     }
 
     public function setModel()
