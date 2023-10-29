@@ -65,6 +65,6 @@ class Read extends Component
 
         return view('livewire.admin.{{ model }}.read', [
             '{{ model }}s' => $data
-        ])->layout('admin::layouts.app', ['title' => __(\Str::plural('{{ modelName }}')) ]);
+        ])->layout('admin::layouts.app-catalogo', ['title' => __(\Str::plural('{{ modelName }}')) ]);
     }
 }

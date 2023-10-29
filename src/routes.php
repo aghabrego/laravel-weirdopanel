@@ -82,3 +82,7 @@ Route::prefix('personalaccesstokens')->middleware('dynamicAcl')->name('personala
     Route::get('/', \WeirdoPanel\Http\Livewire\Personalaccess\Lists::class)->name('lists');
     Route::get('/create', \WeirdoPanel\Http\Livewire\Personalaccess\Create::class)->name('create');
 });
+
+Route::prefix('catalogos')->middleware('dynamicAcl')->name('catalogos.')->group(function (){
+    Route::get('/', \WeirdoPanel\Http\Livewire\Catalogo\Lists::class)->name('lists');
+});

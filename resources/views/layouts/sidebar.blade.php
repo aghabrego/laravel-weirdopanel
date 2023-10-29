@@ -67,6 +67,15 @@
                 </li>
                 @endif
 
+                @if(hasPermission(getRouteName().'.catalogos.lists', true))
+                <li class="sidebar-item @isActive([getRouteName().'.catalogos.lists'], 'selected')">
+                    <a class="sidebar-link @isActive([getRouteName().'.catalogos.lists'], 'active') " href="@route(getRouteName().'.catalogos.lists')" aria-expanded="false">
+                        <i data-feather="list" class="feather-icon"></i>
+                        <span class="hide-menu">{{ __('Catalogos') }}</span>
+                    </a>
+                </li>
+                @endif
+
                 @include('admin::layouts.child-sidebar-menu')
 
 
