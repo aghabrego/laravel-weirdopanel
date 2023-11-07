@@ -12,7 +12,7 @@ trait CustomConnection
         $db = env('DB_DATABASE', null);
 
         if (!empty($db)) {
-            \Illuminate\Support\Facades\DB::connection()->useDatabase($db);
+            \Illuminate\Support\Facades\DB::connection()->useDatabases($db);
         }
     }
 }

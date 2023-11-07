@@ -25,6 +25,7 @@ use Illuminate\{Routing\Router, Support\Facades\Blade, Support\Facades\Route, Su
 use Livewire\Livewire;
 use WeirdoPanel\Models\PanelAdmin;
 use WeirdoPanelTest\Dependencies\User;
+use Illuminate\Database\Connection;
 
 class WeirdoPanelServiceProvider extends ServiceProvider
 {
@@ -40,6 +41,13 @@ class WeirdoPanelServiceProvider extends ServiceProvider
 
         // Facades will be set
         $this->defineFacades();
+
+        Connection::macro('useDatabases', function (string $databaseName) {
+            /** @var \Illuminate\Database\Connection $this */
+
+            $this->getPdo()->exec("USE `$databaseName`;");
+            $this->setDatabaseName($databaseName);
+        });
     }
 
     public function boot()
