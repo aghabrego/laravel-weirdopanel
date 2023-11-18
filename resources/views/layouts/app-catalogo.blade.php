@@ -141,7 +141,7 @@
         <!-- End Container fluid  -->
 
         <!-- footer -->
-        <x-weirdopanel::footer />
+        <x-weirdopanel::footer-app />
         <!-- End footer -->
     </div>
 </div>
