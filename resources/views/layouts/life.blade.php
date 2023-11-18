@@ -159,15 +159,7 @@
         <!-- End Container fluid  -->
 
         <!-- footer -->
-        <footer class="footer text-center text-muted fs-5">
-            <p>Adminmart Template, <a href="https://github.com/aghabrego/laravel-weirdopanel">WeirdoPanel</a> Package.</p>
-            <p>
-                <a href="https://apconpanama.com/politicas-de-privacidad/" target="_blank">Políticas De Privacidad</a>
-                <a href="https://apconpanama.com/terminos-y-condiciones/" target="_blank">Términos y Condiciones</a>
-            </p>
-            <a href="https://youtu.be/S5wFA56pVJ0" target="_blank">{{ __('Video') }}</a>
-            <a href="https://youtu.be/lHiuxEqtRvE" target="_blank">{{ __('How to authorize export') }}</a>
-        </footer>
+        <x-weirdopanel::footer />
         <!-- End footer -->
     </div>
 </div>

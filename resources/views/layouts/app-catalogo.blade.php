@@ -141,7 +141,7 @@
         <!-- End Container fluid  -->
 
         <!-- footer -->
-        <footer class="footer text-center text-muted">Adminmart Template, <a href="https://github.com/aghabrego/laravel-weirdopanel">WeirdoPanel</a> Package.</footer>
+        <x-weirdopanel::footer />
         <!-- End footer -->
     </div>
 </div>
