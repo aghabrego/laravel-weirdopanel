@@ -71,7 +71,7 @@ class Create extends Component
         $this->roles = Role::where('name', '<>', 'super_admin')->get();
 
         if (config('weirdo_panel.with_organization_model')) {
-            $this->organizations = OrganizationFacade::getOrganizations();
+            $this->organizations = OrganizationFacade::allOrganizations();
         }
 
         return view('admin::livewire.user.create')

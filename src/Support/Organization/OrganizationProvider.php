@@ -41,6 +41,21 @@ class OrganizationProvider
     }
 
     /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function allOrganizations()
+    {
+        $organizationModel = OrganizationFacade::getOrganizationModelInstance();
+        /** @var \Illuminate\Database\Eloquent\Builder $query */
+        $query = $organizationModel::query()->orderBy('id', 'desc');
+        $organizations = $query->get()->map(function ($val) {
+            return (object)['id' => $val->id, 'name' => $val->pretty_name];
+        });
+
+        return $organizations;
+    }
+
+    /**
      * @return array
      */
     public static function organizations()

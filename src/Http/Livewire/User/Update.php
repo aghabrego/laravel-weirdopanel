@@ -84,7 +84,7 @@ class Update extends Component
     public function render()
     {
         if (config('weirdo_panel.with_organization_model')) {
-            $this->organizations = OrganizationFacade::getOrganizations();
+            $this->organizations = OrganizationFacade::allOrganizations();
         }
 
         return view('admin::livewire.user.update', [
