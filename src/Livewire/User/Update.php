@@ -47,7 +47,7 @@ class Update extends Component
         $this->validateOnly($input);
     }
 
-    protected function getRules()
+    public function getRules()
     {
         return array_merge($this->rules, ['email' => 'required|unique:users,email,' . $this->user->id]);
     }
