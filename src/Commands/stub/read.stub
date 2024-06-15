@@ -22,7 +22,6 @@ class Read extends Component
     public $sortType;
     public $sortColumn;
 
-    #[On('{{ model }}-created')]
     public function {{ model }}Deleted(){
         // Nothing ..
     }

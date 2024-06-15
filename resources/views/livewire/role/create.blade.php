@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <form class="form-horizontal" x-data="{}" wire:submit.prevent="create" autocomplete="off">
+    <form class="form-horizontal" x-data="{}" wire:submit="create" autocomplete="off">
 
         <div class="card-body">
             <div class="row ">

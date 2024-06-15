@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <form class="form-horizontal" x-data="{}" wire:submit.prevent="update" autocomplete="off">
+    <form class="form-horizontal" x-data="{}" wire:submit="update" autocomplete="off">
 
         <div class="card-body">
             <div class="card-title">{{__('Select Roles')}}</div>

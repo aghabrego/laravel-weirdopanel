@@ -44,7 +44,7 @@ class Update extends Component
 
         $this->admin->roles()->sync($this->selectedRoles);
 
-        $this->dispatchBrowserEvent('show-message', ['type' => 'success', 'message' => __('UpdatedMessage', ['name' => __('Admins')])]);
+        $this->dispatch('show-message', ['type' => 'success', 'message' => __('UpdatedMessage', ['name' => __('Admins')])]);
     }
 
     public function render()
