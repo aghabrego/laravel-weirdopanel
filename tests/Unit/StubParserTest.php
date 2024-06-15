@@ -2,13 +2,13 @@
 
 namespace WeirdoPanelTest\Unit;
 
-use App\Models\Article;
-use WeirdoPanelTest\Dependencies\User;
 use Illuminate\Support\Str;
-use WeirdoPanel\Parsers\HTMLInputs\Text;
-use WeirdoPanel\Parsers\HTMLInputs\Select;
 use WeirdoPanel\Parsers\Fields\Field;
+use WeirdoPanelTest\Dependencies\User;
+use WeirdoPanel\Parsers\HTMLInputs\Text;
 use WeirdoPanel\Parsers\HTMLInputs\Email;
+use WeirdoPanelTest\Dependencies\Article;
+use WeirdoPanel\Parsers\HTMLInputs\Select;
 
 class StubParserTest extends \WeirdoPanelTest\TestCase
 {

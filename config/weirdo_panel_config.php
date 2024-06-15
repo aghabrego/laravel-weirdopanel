@@ -12,16 +12,16 @@ return [
     'lang' => 'en',
 
     // Your user Model
-    'user_model' => file_exists(app_path('User.php')) ? App\User::class : App\Models\User::class,
+    'user_model' => file_exists(app_path('User.php')) ? 'App\User' : 'App\Models\User',
 
     // Your user Model
-    'personal_access_token_model' => file_exists(app_path('Personalaccesstoken.php')) ? App\Personalaccesstoken::class : App\Models\Personalaccesstoken::class,
+    'personal_access_token_model' => file_exists(app_path('Personalaccesstoken.php')) ? 'App\Personalaccesstoken' : 'App\Models\Personalaccesstoken',
 
     // Model verification of organizations
     'with_organization_model' => (file_exists(app_path('Organization.php')) || file_exists(app_path('Models/Organization.php'))),
 
     // Organization model
-    'organization_model' => file_exists(app_path('Organization.php')) ? App\Organization::class : App\Models\Organization::class,
+    'organization_model' => file_exists(app_path('Organization.php')) ? 'App\Organization' : 'App\Models\Organization',
 
     // set default guard to authenticate admins
     'auth_guard' => config('auth.defaults.guard') ?? 'web',

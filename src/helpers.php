@@ -51,9 +51,9 @@ if (!function_exists('hasPermission')) {
         $showButton = true;
 
         if ($withAcl) {
-            if (!auth()->user()->hasPermission($routeName)) {
+            if (!auth()->user()->hasPermission($routeName, $withAcl, false, $entity)) {
                 $showButton = false;
-            } else if ($withPolicy && !auth()->user()->hasPermission($routeName, $entity)) {
+            } else if ($withPolicy && !auth()->user()->hasPermission($routeName, $withAcl, true, $entity)) {
                 $showButton = false;
             }
         }

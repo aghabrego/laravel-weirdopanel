@@ -7,6 +7,7 @@ use WeirdoPanel\Parsers\StubParser;
 use Illuminate\Support\Facades\Hash;
 use Livewire\LivewireServiceProvider;
 use WeirdoPanelTest\Dependencies\User;
+use WeirdoPanelTest\Dependencies\Article;
 use WeirdoPanel\WeirdoPanelServiceProvider;
 use Orchestra\Testbench\TestCase as _TestCase;
 use DynamicAcl\Providers\DynamicAclServiceProvider;
@@ -15,7 +16,7 @@ use Javoscript\MacroableModels\MacroableModelsServiceProvider;
 abstract class TestCase extends _TestCase
 {
     /**
-     * @var \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
+     * @var \WeirdoPanelTest\Dependencies\User
      */
     protected $user;
 
@@ -64,6 +65,6 @@ abstract class TestCase extends _TestCase
 
     private function setParser()
     {
-        $this->parser = new StubParser('article', \App\Models\Article::class);
+        $this->parser = new StubParser('article', Article::class);
     }
 }
