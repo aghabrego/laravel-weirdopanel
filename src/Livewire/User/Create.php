@@ -47,7 +47,7 @@ class Create extends Component
         if (isset($this->selectedOrganizations[0]) && $this->selectedOrganizations[0] == "null")
             $this->selectedOrganizations = [];
 
-        $this->dispatch('show-message', ['type' => 'success', 'message' => __('CreatedMessage', ['name' => __('User') ])]);
+        $this->dispatch('show-message', type: 'success', message: __('CreatedMessage', ['name' => __('User') ]));
         $userModel = $this->getModel();
         $user = $userModel->create([
             'name' => $this->name,

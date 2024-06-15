@@ -30,10 +30,7 @@ class Lists extends Component
             'built' => true
         ]);
 
-        $this->dispatch('show-message', [
-            'type' => 'success',
-            'message' => __('CRUD creado con éxito')
-        ]);
+        $this->dispatch('show-message', type: 'success', message: __('CRUD creado con éxito'));
 
         $this->redirect(route(getRouteName().'.crud.lists'));
     }

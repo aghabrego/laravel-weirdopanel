@@ -145,8 +145,8 @@ class Create extends Component
 
         $token = $user->createToken($this->name, ['*'], $expiredAt);
 
-        $this->dispatch('show-message', ['type' => 'success', 'message' => __('CreatedMessage', ['name' => __('Personalaccesstoken') ])]);
-        $this->dispatch('name-modal-personal-access-token-is-open', ['modalTokenIsOpen' => true, 'token' => $this->token]);
+        $this->dispatch('show-message', type: 'success', message: __('CreatedMessage', ['name' => __('Personalaccesstoken') ]));
+        $this->dispatch('name-modal-personal-access-token-is-open', modalTokenIsOpen: true, token: $this->token);
         $this->reset();
 
         $this->token = $token->plainTextToken;

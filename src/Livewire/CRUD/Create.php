@@ -93,9 +93,9 @@ class Create extends Component
             Artisan::call('route:clear'); // Remove the route cache file
             Artisan::call('route:cache'); // Create a route cache file for faster route registration
 
-            $this->dispatch('show-message', ['type' => 'success', 'message' => __('CreatedMessage', ['name' => __('CRUD') ])]);
+            $this->dispatch('show-message', type: 'success', message: __('CreatedMessage', ['name' => __('CRUD') ]));
         } catch(\Exception $exception){
-            $this->dispatch('show-message', ['type' => 'error', 'message' => __('UnknownError') ]);
+            $this->dispatch('show-message', type: 'error', message: __('UnknownError'));
         }
 
 

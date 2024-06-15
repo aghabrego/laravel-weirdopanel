@@ -18,7 +18,7 @@ class Single extends Component
     public function delete()
     {
         if (auth()->id() == $this->admin->id) {
-            $this->dispatch('show-message', ['type' => 'error', 'message' => __('CannotDeleteMessage', ['name' => __('Admin')])]);
+            $this->dispatch('show-message', type: 'error', message: __('CannotDeleteMessage', ['name' => __('Admin')]));
             return;
         }
 
@@ -26,7 +26,7 @@ class Single extends Component
 
         UserProviderFacade::deleteAdmin($this->admin->id);
 
-        $this->dispatch('show-message', ['type' => 'error', 'message' => __('DeletedMessage', ['name' => __('Admin') ] )]);
+        $this->dispatch('show-message', type: 'error', message:  __('DeletedMessage', ['name' => __('Admin') ] ));
         $this->dispatch('adminsUpdated');
     }
 

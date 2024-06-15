@@ -17,7 +17,7 @@ class Single extends Component
     public function delete()
     {
         $this->personalaccesstoken->delete();
-        $this->dispatch('show-message', ['type' => 'error', 'message' => __('DeletedMessage', ['name' => __('PersonalAccessToken') ]) ]);
+        $this->dispatch('show-message', type: 'error', message: __('DeletedMessage', ['name' => __('PersonalAccessToken') ]));
         $this->dispatch('personalaccesstokenDeleted');
     }
 

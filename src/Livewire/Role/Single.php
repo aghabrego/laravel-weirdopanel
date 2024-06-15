@@ -18,7 +18,7 @@ class Single extends Component
     public function delete()
     {
         if ($this->role->is_super_admin()) {
-            $this->dispatch('show-message', ['type' => 'error', 'message' => __('CannotDeleteMessage', ['name' => __('Role')])]);
+            $this->dispatch('show-message', type: 'error', message: __('CannotDeleteMessage', ['name' => __('Role')]));
             return;
         }
 
@@ -26,7 +26,7 @@ class Single extends Component
         
         $this->role->delete();
 
-        $this->dispatch('show-message', ['type' => 'error', 'message' => __('DeletedMessage', ['name' => __('Role') ] )]);
+        $this->dispatch('show-message', type: 'error', message: __('DeletedMessage', ['name' => __('Role')]));
         $this->dispatch('roleUpdated');
     }
 

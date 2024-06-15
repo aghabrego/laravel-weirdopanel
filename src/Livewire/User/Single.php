@@ -17,7 +17,7 @@ class Single extends Component
     public function delete()
     {
         $this->user->delete();
-        $this->dispatch('show-message', ['type' => 'error', 'message' => __('DeletedMessage', ['name' => __('User') ]) ]);
+        $this->dispatch('show-message', type: 'error', message: __('DeletedMessage', ['name' => __('User') ]));
         $this->dispatch('userDeleted');
     }
 

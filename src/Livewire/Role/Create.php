@@ -58,9 +58,9 @@ class Create extends Component
         try {
             Role::create(['name' => $this->name, 'permissions' => $this->fixAccessKeys()]);
 
-            $this->dispatch('show-message', ['type' => 'success', 'message' => __('CreatedMessage', ['name' => __('Role') ])]);
+            $this->dispatch('show-message', type: 'success', message: __('CreatedMessage', ['name' => __('Role') ]));
         } catch (\Exception $exception){
-            $this->dispatch('show-message', ['type' => 'error', 'message' => $exception->getMessage()]);
+            $this->dispatch('show-message', type: 'error', message: $exception->getMessage());
         }
 
         $this->reset();

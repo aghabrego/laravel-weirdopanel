@@ -63,7 +63,7 @@ class Update extends Component
             $this->validate();
 
         if ($this->role->is_super_admin()) {
-            $this->dispatch('show-message', ['type' => 'error', 'message' => __('CannotUpdateMessage', ['name' => __('Role')])]);
+            $this->dispatch('show-message', type: 'error', message: __('CannotUpdateMessage', ['name' => __('Role')]));
             return;
         }
 
@@ -72,7 +72,7 @@ class Update extends Component
             'permissions' => $this->getSelectedAccess()
         ]);
 
-        $this->dispatch('show-message', ['type' => 'success', 'message' => __('UpdatedMessage', ['name' => __('Role')])]);
+        $this->dispatch('show-message', type: 'success', message: __('UpdatedMessage', ['name' => __('Role')]));
     }
 
     public function render()

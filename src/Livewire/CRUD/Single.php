@@ -24,7 +24,7 @@ class Single extends Component
         ]);
 
         $this->crud->delete();
-        $this->dispatch('show-message', ['type' => 'error', 'message' => __('DeletedMessage', ['name' => __('CRUD') ] )]);
+        $this->dispatch('show-message', type: 'error', message: __('DeletedMessage', ['name' => __('CRUD') ] ));
         $this->dispatch('crudUpdated');
     }
 
@@ -39,7 +39,7 @@ class Single extends Component
             'built' => true
         ]);
 
-        $this->dispatch('show-message', ['type' => 'success', 'message' => __('CRUD creado con éxito') ] );
+        $this->dispatch('show-message', type: 'success', message: __('CRUD creado con éxito'));
         $this->dispatch('crudUpdated');
     }
 
@@ -49,7 +49,7 @@ class Single extends Component
             'active' => false
         ]);
 
-        $this->dispatch('show-message', ['type' => 'success', 'message' => __('CRUD fue desactivado') ] );
+        $this->dispatch('show-message', type: 'success', message: __('CRUD fue desactivado'));
         $this->dispatch('crudUpdated');
     }
 
@@ -59,7 +59,7 @@ class Single extends Component
             'active' => true
         ]);
 
-        $this->dispatch('show-message', ['type' => 'success', 'message' => __('CRUD fue activado') ] );
+        $this->dispatch('show-message', type: 'success', message: __('CRUD fue activado'));
         $this->dispatch('crudUpdated');
     }
 

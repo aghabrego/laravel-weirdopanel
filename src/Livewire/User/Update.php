@@ -63,7 +63,7 @@ class Update extends Component
         if (isset($this->selectedOrganizations[0]) && $this->selectedOrganizations[0] == "null")
             $this->selectedOrganizations = [];
 
-        $this->dispatch('show-message', ['type' => 'success', 'message' => __('UpdatedMessage', ['name' => __('User') ]) ]);
+        $this->dispatch('show-message', type: 'success', message: __('UpdatedMessage', ['name' => __('User') ]));
 
         $this->user->update([
             'name' => $this->name,
