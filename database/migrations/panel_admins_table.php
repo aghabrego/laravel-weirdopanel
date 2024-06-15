@@ -15,7 +15,7 @@ class CreatePanelAdminsTableWeirdoPanel extends Migration
     {
         Schema::create('panel_admins', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->bigInteger('user_id', false, true);
             $table->boolean('is_superuser');
             $table->timestamps();
 

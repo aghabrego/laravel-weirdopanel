@@ -19,7 +19,7 @@ class TranslationTest extends TestCase
         Livewire::test(Manage::class)
             ->set('language', 'fa')
             ->call('create')
-            ->assertDispatchedBrowserEvent('show-message')
+            ->assertDispatched('show-message')
             ->assertHasNoErrors();
     }
 
@@ -82,7 +82,7 @@ class TranslationTest extends TestCase
         Livewire::test(Manage::class)
             ->set('selectedLang', 'test')
             ->call('update')
-            ->assertDispatchedBrowserEvent('show-message');
+            ->assertDispatched('show-message');
     }
 
     /** @test * */
