@@ -1,6 +1,6 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\Role;
+namespace WeirdoPanel\Livewire\Role;
 
 use DynamicAcl\ACL;
 use DynamicAcl\Models\Role;

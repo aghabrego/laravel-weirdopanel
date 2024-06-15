@@ -1,6 +1,6 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\CRUD;
+namespace WeirdoPanel\Livewire\CRUD;
 
 use Livewire\Component;
 use Livewire\WithPagination;

@@ -1,6 +1,6 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\Admins;
+namespace WeirdoPanel\Livewire\Admins;
 
 use WeirdoPanel\Support\Contract\UserProviderFacade;
 use DynamicAcl\Models\Role;

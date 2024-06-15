@@ -16,7 +16,7 @@
             <div class="row ">
                 <div class="col-md-12">
                     <div class="form-group position-relative">
-                        <input id="model" wire:click="setModel" type="text" placeholder="{{ __('Model namespace') }}" class="form-control rounded @error('model') is-invalid @enderror" wire:model="model">
+                        <input id="model" wire:click="setModel" type="text" placeholder="{{ __('Model namespace') }}" class="form-control rounded @error('model') is-invalid @enderror" wire:model.live="model">
                         @if($models and $dropdown)
                             <div @click.away="Livewire.emit('closeModal')" class="bg-white position-absolute w-100 mt-2 rounded d-flex flex-column shadow" style="z-index: 10">
                                 @foreach($models as $key => $model)
@@ -32,14 +32,14 @@
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input id="route" type="text" placeholder="{{ __('Route of CRUD') }}" class="form-control rounded @error('route') is-invalid @enderror" wire:model="route">
+                        <input id="route" type="text" placeholder="{{ __('Route of CRUD') }}" class="form-control rounded @error('route') is-invalid @enderror" wire:model.live="route">
                         @error('route') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group position-relative">
-                        <input id="route" type="text" placeholder="{{ __('Icon of CRUD') }} (fa fa-user)" class="form-control rounded @error('icon') is-invalid @enderror" wire:model="icon">
+                        <input id="route" type="text" placeholder="{{ __('Icon of CRUD') }} (fa fa-user)" class="form-control rounded @error('icon') is-invalid @enderror" wire:model.live="icon">
                         <i class="position-absolute {{ $icon }}" style="top: 9px;@if(config('weirdo_panel.rtl_mode')) left: 15px @else right: 15px @endif"></i>
                         @error('icon') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         <p class="mt-2 font-12">{{ __('More icons in') }} <a href="https://fontawesome.com/icons">{{ __('FontAwesome') }}</a></p>
@@ -48,7 +48,7 @@
 
                 <div class="col-md-6">
                     <div class="form-check text-{{ config('weirdo_panel.rtl_mode') === true ? 'right' : 'left' }}">
-                        <input type="checkbox" class="form-check-input" id="with_acl" wire:model="withAcl" value="1">
+                        <input type="checkbox" class="form-check-input" id="with_acl" wire:model.live="withAcl" value="1">
                         <label class='form-check-label' for="with_acl">{{ __('With ACL') }}</label>
                     </div>
                     <span class="text-info font-12">{{ __('Needs to be protected using roles and permissions.') }}</span>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-check text-{{ config('weirdo_panel.rtl_mode') === true ? 'right' : 'left' }}">
-                        <input type="checkbox" {{$withAcl ? '' : 'disabled'}} class="form-check-input" id="with_policy" wire:model="withPolicy" value="1">
+                        <input type="checkbox" {{$withAcl ? '' : 'disabled'}} class="form-check-input" id="with_policy" wire:model.live="withPolicy" value="1">
                         <label class='form-check-label' for="with_policy">{{ __('With Policy') }}</label>
                     </div>
                     <span class="text-info font-12">{{ __('Admin can only delete its own data in table.') }}</span>

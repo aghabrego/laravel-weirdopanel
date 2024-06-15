@@ -18,7 +18,7 @@
                 <div class="col-md-12">
                     <div class="form-group position-relative">
 
-                        <select multiple="" class="form-control rounded @error('selectedRoles') is-invalid @enderror" wire:model="selectedRoles" id="exampleFormControlSelect2">
+                        <select multiple="" class="form-control rounded @error('selectedRoles') is-invalid @enderror" wire:model.live="selectedRoles" id="exampleFormControlSelect2">
                             <option value="null">{{__('Without Role')}}</option>
                             @foreach($roles as $role)
                                 <option value="{{$role->id}}">{{$role->name}}</option>
@@ -31,14 +31,14 @@
 
                 {{--<div class="col-md-6">
                     <div class="form-group">
-                        <input id="route" type="text" placeholder="{{ __('Route of CRUD') }}" class="form-control rounded @error('route') is-invalid @enderror" wire:model="route">
+                        <input id="route" type="text" placeholder="{{ __('Route of CRUD') }}" class="form-control rounded @error('route') is-invalid @enderror" wire:model.live="route">
                         @error('route') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group position-relative">
-                        <input id="route" type="text" placeholder="{{ __('Icon of CRUD') }} (fa fa-user)" class="form-control rounded @error('icon') is-invalid @enderror" wire:model="icon">
+                        <input id="route" type="text" placeholder="{{ __('Icon of CRUD') }} (fa fa-user)" class="form-control rounded @error('icon') is-invalid @enderror" wire:model.live="icon">
                         <i class="position-absolute {{ $icon }}" style="top: 9px;@if(config('weirdo_panel.rtl_mode')) left: 15px @else right: 15px @endif"></i>
                         @error('icon') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         <p class="mt-2 font-12">{{ __('More icons in') }} <a href="https://fontawesome.com/icons">{{ __('FontAwesome') }}</a></p>

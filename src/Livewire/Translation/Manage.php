@@ -1,6 +1,6 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\Translation;
+namespace WeirdoPanel\Livewire\Translation;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\File;

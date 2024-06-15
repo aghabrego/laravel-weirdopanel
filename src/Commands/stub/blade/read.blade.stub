@@ -20,7 +20,7 @@
                         @if(getCrudConfig('{{ modelName }}')->searchable())
                         <div class="col-md-4">
                             <div class="input-group">
-                                <input type="text" class="form-control" @if(config('weirdo_panel.lazy_mode')) wire:model.lazy="search" @else wire:model="search" @endif placeholder="{{ __('Search') }}" value="{{ request('search') }}">
+                                <input type="text" class="form-control" @if(config('weirdo_panel.lazy_mode')) wire:model.blur="search" @else wire:model.live="search" @endif placeholder="{{ __('Search') }}" value="{{ request('search') }}">
                                 <div class="input-group-append">
                                     <button class="btn btn-default">
                                         <a wire:target="search" wire:loading.remove><i class="fa fa-search"></i></a>

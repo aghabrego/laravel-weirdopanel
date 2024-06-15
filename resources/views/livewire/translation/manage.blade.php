@@ -4,7 +4,7 @@
             <div class="d-flex justify-content-between">
                 <h3 class="card-title">{{ __('Translation') }}</h3>
                 <div class="customize-input">
-                    <select id="langChanger" wire:model="selectedLang" class="custom-select text-dark custom-select-set form-control bg-white border-0 custom-shadow custom-radius" style="border-radius: 6px">
+                    <select id="langChanger" wire:model.live="selectedLang" class="custom-select text-dark custom-select-set form-control bg-white border-0 custom-shadow custom-radius" style="border-radius: 6px">
                         @foreach(\WeirdoPanel\Services\LangService::getLanguages() as $key => $value)
                             <option value="{{ $key }}" selected>{{ $value }}</option>
                         @endforeach
@@ -25,7 +25,7 @@
                 <div class="row ">
                     <div class="col-md-9 mb-3">
                         <div class="form-group">
-                            <input id="route" type="text" placeholder="{{ __('Name of custom language') }}" class="form-control rounded @error('language') is-invalid @enderror" wire:model="language">
+                            <input id="route" type="text" placeholder="{{ __('Name of custom language') }}" class="form-control rounded @error('language') is-invalid @enderror" wire:model.live="language">
                             @error('language') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group position-relative">
-                                <input id="route" type="text" placeholder="" class="form-control rounded" value="{{ $text }}" wire:model="texts.{{ $key }}">
+                                <input id="route" type="text" placeholder="" class="form-control rounded" value="{{ $text }}" wire:model.live="texts.{{ $key }}">
                             </div>
                         </div>
                     @endforeach

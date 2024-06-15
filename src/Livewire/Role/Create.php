@@ -1,6 +1,6 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\Admins;
+namespace WeirdoPanel\Livewire\Role;
 
 use Livewire\Component;
 use DynamicAcl\ACL;
@@ -10,7 +10,11 @@ class Create extends Component
 {
     public $name;
 
+    public $permissionsData = [];
+
     public $access = [];
+
+    public $selectedAll = [];
 
     protected $rules = [
         'name' => 'required|min:3|unique:roles',
@@ -22,10 +26,29 @@ class Create extends Component
         foreach($this->access as $key => $value) {
             unset($this->access[$key]);
             $key = str_replace('-', '.', $key);
-            $this->access[$key] = $value;
+            $this->access[$key] = is_array($value) ? array_filter($value) : $value;
         }
 
-        return $this->access;
+        return array_filter($this->access);
+    }
+
+    /**
+     * this method checks if whole checkboxes checked, set value true for SelectAll checkbox
+     *
+     * @param string $key
+     *
+     * @param string $dashKey
+     */
+    public function checkSelectedAll($key, $dashKey)
+    {
+        $selectedRoutes = is_array($this->access[$dashKey]) ? array_filter($this->access[$dashKey]) : $this->access[$dashKey];
+
+        // we don't have delete route in cruds but we have a button for it. that's why i added 1
+        if (is_array($selectedRoutes)) {
+            $this->selectedAll[$dashKey] = count($selectedRoutes) == count($this->permissionsData[$key]) + 1;
+        } else {
+            $this->selectedAll[$dashKey] = $selectedRoutes;
+        }
     }
 
     public function create()
@@ -45,9 +68,9 @@ class Create extends Component
 
     public function render()
     {
-        $permissions = ACL::getRoutes();
+        $this->permissionsData = ACL::getRoutes();
 
-        return view('admin::livewire.role.create', compact('permissions'))
+        return view('admin::livewire.role.create', ['permissions' => $this->permissionsData])
             ->layout('admin::layouts.app', ['title' => __('CreateTitle', ['name' => __('Role') ])]);
     }
 }

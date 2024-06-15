@@ -15,7 +15,7 @@
         <div class="card-body">
             <div class="form-group position-relative">
                 <label for='input-name' class='col-sm-2 control-label '> {{ __('Users') }}</label>
-                <input id="model" wire:click="setModel" type="text" class="form-control rounded @error('model') is-invalid @enderror" wire:model="model">
+                <input id="model" wire:click="setModel" type="text" class="form-control rounded @error('model') is-invalid @enderror" wire:model.live="model">
                 @if($models and $dropdown)
                     <div @click.away="Livewire.emit('closeModal')" class="bg-white position-absolute w-100 mt-2 rounded d-flex flex-column shadow" style="z-index: 10">
                         @foreach($models as $key => $model)
@@ -31,7 +31,7 @@
             <!-- Nombre Input -->
             <div class='form-group'>
                 <label for='input-name' class='col-sm-2 control-label '> {{ __('Nombre') }}</label>
-                <input type='text' id='input-name' wire:model.lazy='name' class="form-control  @error('name') is-invalid @enderror" placeholder='' autocomplete='on'>
+                <input type='text' id='input-name' wire:model.blur='name' class="form-control  @error('name') is-invalid @enderror" placeholder='' autocomplete='on'>
                 @error('name') <div class='invalid-feedback'>{{ $message }}</div> @enderror
             </div>
 

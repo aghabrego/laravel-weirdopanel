@@ -1,6 +1,6 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\Personalaccess;
+namespace WeirdoPanel\Livewire\Personalaccess;
 
 use Livewire\Component;
 

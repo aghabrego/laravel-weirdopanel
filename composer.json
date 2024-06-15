@@ -13,7 +13,7 @@
         "illuminate/support": "^7.0|^8.0|^9.0|^10",
         "weirdo/laravel-easyblade" : "^0.8",
         "laravel/framework": "^7.0|^8.0|^9.0|^10",
-        "livewire/livewire": "^1.0|^2.3",
+        "livewire/livewire": "^1.0|^2.3|^3.0",
         "weirdo/dynamic-acl": "^1.0.5",
         "guzzlehttp/guzzle": "^7.2"
     },

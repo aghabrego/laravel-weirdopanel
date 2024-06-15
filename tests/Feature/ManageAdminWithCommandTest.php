@@ -9,8 +9,6 @@ use WeirdoPanel\Support\Contract\UserProviderFacade;
 
 class ManageAdminWithCommandTest extends TestCase
 {
-    use RefreshDatabase;
-
     /** @test * */
     public function create_admin_with_command()
     {

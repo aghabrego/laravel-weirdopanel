@@ -1,6 +1,6 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\User;
+namespace WeirdoPanel\Livewire\User;
 
 use Livewire\Component;
 use DynamicAcl\Models\Role;

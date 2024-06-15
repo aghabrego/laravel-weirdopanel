@@ -26,7 +26,7 @@ abstract class CommandBase extends GeneratorCommand
     public function getDefaultNamespace($rootNamespace)
     {
         $name = ucfirst($this->getNameInput());
-        $this->path = parent::getDefaultNamespace($rootNamespace).DIRECTORY_SEPARATOR."Http".DIRECTORY_SEPARATOR."Livewire".DIRECTORY_SEPARATOR."Admin".DIRECTORY_SEPARATOR."$name";
+        $this->path = parent::getDefaultNamespace($rootNamespace).DIRECTORY_SEPARATOR."Livewire".DIRECTORY_SEPARATOR."Admin".DIRECTORY_SEPARATOR."$name";
 
         return $this->path;
     }

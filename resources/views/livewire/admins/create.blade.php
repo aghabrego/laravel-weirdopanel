@@ -17,7 +17,7 @@
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input id="route" type="text" placeholder="{{ __('Name of Role') }}" class="form-control rounded @error('name') is-invalid @enderror" wire:model="name">
+                        <input id="route" type="text" placeholder="{{ __('Name of Role') }}" class="form-control rounded @error('name') is-invalid @enderror" wire:model.live="name">
                         @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                             @endphp
                             @foreach($value as $keyAccess)
                             <div class="form-check text-left col-md-4">
-                                <input type="checkbox" class="form-check-input" id="permission_check_{{$keyAccess['name']}}" wire:model="access.{{$dashKey}}.{{$keyAccess['name']}}" value="1">
+                                <input type="checkbox" class="form-check-input" id="permission_check_{{$keyAccess['name']}}" wire:model.live="access.{{$dashKey}}.{{$keyAccess['name']}}" value="1">
                                 <label class='form-check-label' for="permission_check_{{$keyAccess['name']}}">{{ $keyAccess['name'] }}</label>
                             </div>
                             @endforeach

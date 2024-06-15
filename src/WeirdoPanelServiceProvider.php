@@ -117,24 +117,24 @@ class WeirdoPanelServiceProvider extends ServiceProvider
 
     private function loadLivewireComponent()
     {
-        Livewire::component('admin::livewire.crud.single', Http\Livewire\CRUD\Single::class);
-        Livewire::component('admin::livewire.crud.create', Http\Livewire\CRUD\Create::class);
-        Livewire::component('admin::livewire.crud.lists', Http\Livewire\CRUD\Lists::class);
+        Livewire::component('admin::livewire.crud.single', Livewire\CRUD\Single::class);
+        Livewire::component('admin::livewire.crud.create', Livewire\CRUD\Create::class);
+        Livewire::component('admin::livewire.crud.lists', Livewire\CRUD\Lists::class);
 
-        Livewire::component('admin::livewire.translation.manage', Http\Livewire\Translation\Manage::class);
+        Livewire::component('admin::livewire.translation.manage', Livewire\Translation\Manage::class);
 
-        Livewire::component('admin::livewire.role.single', Http\Livewire\Role\Single::class);
-        Livewire::component('admin::livewire.role.create', Http\Livewire\Role\Create::class);
-        Livewire::component('admin::livewire.role.update', Http\Livewire\Role\Update::class);
-        Livewire::component('admin::livewire.role.lists', Http\Livewire\Role\Lists::class);
+        Livewire::component('admin::livewire.role.single', Livewire\Role\Single::class);
+        Livewire::component('admin::livewire.role.create', Livewire\Role\Create::class);
+        Livewire::component('admin::livewire.role.update', Livewire\Role\Update::class);
+        Livewire::component('admin::livewire.role.lists', Livewire\Role\Lists::class);
 
-        Livewire::component('admin::livewire.admins.single', Http\Livewire\Admins\Single::class);
-        Livewire::component('admin::livewire.admins.update', Http\Livewire\Admins\Update::class);
+        Livewire::component('admin::livewire.admins.single', Livewire\Admins\Single::class);
+        Livewire::component('admin::livewire.admins.update', Livewire\Admins\Update::class);
 
-        Livewire::component('admin::livewire.user.single', Http\Livewire\User\Single::class);
-        Livewire::component('admin::livewire.user.create', Http\Livewire\User\Create::class);
-        Livewire::component('admin::livewire.user.update', Http\Livewire\User\Update::class);
-        Livewire::component('admin::livewire.user.lists', Http\Livewire\User\Lists::class);
+        Livewire::component('admin::livewire.user.single', Livewire\User\Single::class);
+        Livewire::component('admin::livewire.user.create', Livewire\User\Create::class);
+        Livewire::component('admin::livewire.user.update', Livewire\User\Update::class);
+        Livewire::component('admin::livewire.user.lists', Livewire\User\Lists::class);
     }
 
     private function mergePublishes()

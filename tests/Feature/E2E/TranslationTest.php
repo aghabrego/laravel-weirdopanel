@@ -6,7 +6,7 @@ namespace WeirdoPanelTest\Feature\E2E;
 
 use WeirdoPanelTest\TestCase;
 use Livewire\Livewire;
-use WeirdoPanel\Http\Livewire\Translation\Manage;
+use WeirdoPanel\Livewire\Translation\Manage;
 use WeirdoPanel\Support\Contract\LangManager;
 
 class TranslationTest extends TestCase
