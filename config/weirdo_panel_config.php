@@ -5,6 +5,9 @@ return [
     // Enable whole module
     'enable' => true,
 
+    // To prevent registration of crud routes
+    'enable_crud_route' => true,
+
     // RTL Style , If you are using a language like Persian or Arabic change it true
     'rtl_mode' => false,
 

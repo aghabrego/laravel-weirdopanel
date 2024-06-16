@@ -74,8 +74,10 @@ class WeirdoPanelServiceProvider extends ServiceProvider
         // Register Middleware
         $this->registerMiddlewareAlias();
 
-        // Define routes if doesn't cached
-        $this->defineRoutes();
+        if(config('weirdo_panel.enable_crud_route')) {
+            // Define routes if doesn't cached
+            $this->defineRoutes();
+        }
 
         // Load Livewire components
         $this->loadLivewireComponent();
