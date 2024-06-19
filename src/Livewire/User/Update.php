@@ -29,7 +29,8 @@ class Update extends Component
 
     public function mount($user)
     {
-        $this->roles = Role::where('name', '<>', 'super_admin')->get();
+        $role = $this->getRoleModel();
+        $this->roles = $role->all();
         $admin = UserProviderFacade::findUser($user);
         $this->user = $admin;
         $this->name = $this->user->name;
@@ -50,6 +51,11 @@ class Update extends Component
     public function getRules()
     {
         return array_merge($this->rules, ['email' => 'required|unique:users,email,' . $this->user->id]);
+    }
+
+    public function getRoleModel()
+    {
+        return app(config('weirdo_panel.role_model'));
     }
 
     public function update()

@@ -3,7 +3,6 @@
 namespace WeirdoPanel\Livewire\User;
 
 use Livewire\Component;
-use DynamicAcl\Models\Role;
 use Livewire\WithFileUploads;
 use WeirdoPanel\Support\Contract\OrganizationFacade;
 use WeirdoPanel\Support\Contract\UserProviderFacade;
@@ -34,6 +33,11 @@ class Create extends Component
     public function getModel()
     {
         return app(config('weirdo_panel.user_model'));
+    }
+
+    public function getRoleModel()
+    {
+        return app(config('weirdo_panel.role_model'));
     }
 
     public function create()
@@ -68,7 +72,8 @@ class Create extends Component
 
     public function render()
     {
-        $this->roles = Role::where('name', '<>', 'super_admin')->get();
+        $role = $this->getRoleModel();
+        $this->roles = $role->all();
 
         if (config('weirdo_panel.with_organization_model')) {
             $this->organizations = OrganizationFacade::allOrganizations();
