@@ -19,7 +19,10 @@ class isAdmin
             return redirect($redirectPath);
         }
 
-        if(!AuthFacade::check(auth()->user()->id)){
+        /** @var mixed $user */
+        $user = auth()->user();
+
+        if(!AuthFacade::check($user->getkey())){
             return redirect($redirectPath);
         }
 
