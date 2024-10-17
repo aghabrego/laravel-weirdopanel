@@ -27,7 +27,7 @@ class Update extends Component
         $this->validateOnly($input);
     }
 
-    protected function getRules()
+    public function getRules()
     {
         $rules = \Arr::map($this->rules, function ($val, $key) {
             if (strpos($val, "unique:{$this->{{ model }}->getTable()}")) {

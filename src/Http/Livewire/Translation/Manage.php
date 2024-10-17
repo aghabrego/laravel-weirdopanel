@@ -29,7 +29,7 @@ class Manage extends Component
             ->layout('admin::layouts.app', ['title' => __('Translation')]);
     }
 
-    protected function getRules()
+    public function getRules()
     {
         return [
             'language' => 'required|min:2|max:10|string'
