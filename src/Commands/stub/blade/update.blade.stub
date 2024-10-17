@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <form class="form-horizontal" wire:submit.prevent="update" enctype="multipart/form-data">
+    <form class="form-horizontal" wire:submit="update" enctype="multipart/form-data">
 
         <div class="card-body">
 

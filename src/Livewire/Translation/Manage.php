@@ -1,6 +1,6 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\Translation;
+namespace WeirdoPanel\Livewire\Translation;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\File;
@@ -43,9 +43,9 @@ class Manage extends Component
             $lang = strtolower($this->language) . '_panel';
             File::copy(LangManager::getPath('en_panel'), LangManager::getPath($lang));
 
-            $this->dispatchBrowserEvent('show-message', ['type' => 'success', 'message' => __('CreatedMessage', ['name' => __('Translation') ])]);
+            $this->dispatch('show-message', type: 'success', message: __('CreatedMessage', ['name' => __('Translation') ]));
         } catch (\Exception $exception){
-            $this->dispatchBrowserEvent('show-message', ['type' => 'error', 'message' => $exception->getMessage()]);
+            $this->dispatch('show-message', type: 'error', message: $exception->getMessage());
         }
 
         $this->reset('language');
@@ -55,6 +55,6 @@ class Manage extends Component
     {
         LangManager::updateLanguage($this->selectedLang, $this->texts);
 
-        $this->dispatchBrowserEvent('show-message', ['type' => 'success', 'message' => __('UpdatedMessage', ['name' => __('Translation') ])]);
+        $this->dispatch('show-message', type: 'success', message: __('UpdatedMessage', ['name' => __('Translation') ]));
     }
 }

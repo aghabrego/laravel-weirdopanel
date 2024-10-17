@@ -102,7 +102,7 @@
             <div class='form-group'>
                 <label for='editor-{{ Name }}' class='col-sm-2 control-label {{ labelStyle }}'> {{ __('{{ Title }}') }}</label>
                 <div wire:ignore>
-                    <textarea class='form-control ckeditor {{ inputStyle }}' id='editor-{{ Name }}' wire:model='{{ Name }}'></textarea>
+                    <textarea class='form-control ckeditor {{ inputStyle }}' id='editor-{{ Name }}' wire:model.live='{{ Name }}'></textarea>
                 </div>
                 <script>
                     window.addEventListener('load', function () {

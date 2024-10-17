@@ -1,6 +1,6 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\Catalogo;
+namespace WeirdoPanel\Livewire\Catalogo;
 
 use Livewire\Component;
 

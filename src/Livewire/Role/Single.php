@@ -1,6 +1,6 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\Role;
+namespace WeirdoPanel\Livewire\Role;
 
 use Livewire\Component;
 use DynamicAcl\Models\Role;
@@ -18,7 +18,7 @@ class Single extends Component
     public function delete()
     {
         if ($this->role->is_super_admin()) {
-            $this->dispatchBrowserEvent('show-message', ['type' => 'error', 'message' => __('CannotDeleteMessage', ['name' => __('Role')])]);
+            $this->dispatch('show-message', type: 'error', message: __('CannotDeleteMessage', ['name' => __('Role')]));
             return;
         }
 
@@ -26,8 +26,8 @@ class Single extends Component
         
         $this->role->delete();
 
-        $this->dispatchBrowserEvent('show-message', ['type' => 'error', 'message' => __('DeletedMessage', ['name' => __('Role') ] )]);
-        $this->emit('roleUpdated');
+        $this->dispatch('show-message', type: 'error', message: __('DeletedMessage', ['name' => __('Role')]));
+        $this->dispatch('roleUpdated');
     }
 
     public function render()

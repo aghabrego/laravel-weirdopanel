@@ -1,6 +1,6 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\CRUD;
+namespace WeirdoPanel\Livewire\CRUD;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -30,10 +30,7 @@ class Lists extends Component
             'built' => true
         ]);
 
-        $this->dispatchBrowserEvent('show-message', [
-            'type' => 'success',
-            'message' => __('CRUD creado con éxito')
-        ]);
+        $this->dispatch('show-message', type: 'success', message: __('CRUD creado con éxito'));
 
         $this->redirect(route(getRouteName().'.crud.lists'));
     }

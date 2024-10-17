@@ -8,8 +8,6 @@ use WeirdoPanelTest\TestCase;
 
 class UserProviderFacadeTest extends TestCase
 {
-    use RefreshDatabase;
-
     /** @test * */
     public function find_a_real_user_by_id()
     {

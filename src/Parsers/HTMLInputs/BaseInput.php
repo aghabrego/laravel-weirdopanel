@@ -21,7 +21,7 @@ abstract class BaseInput
     public function __construct($label)
     {
         $this->label = $label;
-        $this->mode = config('weirdo_panel.lazy_mode') ? 'wire:model.lazy' : 'wire:model';
+        $this->mode = config('weirdo_panel.lazy_mode') ? 'wire:model.blur' : 'wire:model.live';
         $this->addText($label);
     }
 
@@ -68,7 +68,7 @@ abstract class BaseInput
 
     public function lazyMode()
     {
-        $this->mode = 'wire:model.lazy';
+        $this->mode = 'wire:model.blur';
 
         return $this;
     }
@@ -82,7 +82,7 @@ abstract class BaseInput
 
     public function deferMode()
     {
-        $this->mode = 'wire:model.defer';
+        $this->mode = 'wire:model';
 
         return $this;
     }

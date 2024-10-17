@@ -10,6 +10,7 @@ use WeirdoPanelTest\Dependencies\User;
 use WeirdoPanelTest\Dependencies\Article;
 use WeirdoPanel\WeirdoPanelServiceProvider;
 use Orchestra\Testbench\TestCase as _TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use DynamicAcl\Providers\DynamicAclServiceProvider;
 use Javoscript\MacroableModels\MacroableModelsServiceProvider;
 

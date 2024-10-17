@@ -1,6 +1,6 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\User;
+namespace WeirdoPanel\Livewire\User;
 
 use Livewire\Component;
 use DynamicAcl\Models\Role;
@@ -29,7 +29,8 @@ class Update extends Component
 
     public function mount($user)
     {
-        $this->roles = Role::where('name', '<>', 'super_admin')->get();
+        $role = $this->getRoleModel();
+        $this->roles = $role->all();
         $admin = UserProviderFacade::findUser($user);
         $this->user = $admin;
         $this->name = $this->user->name;
@@ -52,6 +53,11 @@ class Update extends Component
         return array_merge($this->rules, ['email' => 'required|unique:users,email,' . $this->user->id]);
     }
 
+    public function getRoleModel()
+    {
+        return app(config('weirdo_panel.role_model'));
+    }
+
     public function update()
     {
         if($this->getRules())
@@ -63,7 +69,7 @@ class Update extends Component
         if (isset($this->selectedOrganizations[0]) && $this->selectedOrganizations[0] == "null")
             $this->selectedOrganizations = [];
 
-        $this->dispatchBrowserEvent('show-message', ['type' => 'success', 'message' => __('UpdatedMessage', ['name' => __('User') ]) ]);
+        $this->dispatch('show-message', type: 'success', message: __('UpdatedMessage', ['name' => __('User') ]));
 
         $this->user->update([
             'name' => $this->name,

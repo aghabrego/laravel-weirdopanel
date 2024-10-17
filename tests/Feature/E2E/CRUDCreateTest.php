@@ -4,7 +4,7 @@ namespace WeirdoPanelTest\Feature\E2E;
 
 use WeirdoPanelTest\TestCase;
 use Livewire\Livewire;
-use WeirdoPanel\Http\Livewire\CRUD\Create;
+use WeirdoPanel\Livewire\CRUD\Create;
 use WeirdoPanel\Models\CRUD;
 
 class CRUDCreateTest extends TestCase

@@ -155,7 +155,7 @@
 @script("/assets/admin/js/sidebarmenu.min.js")
 @script("/assets/admin/js/custom.min.js")
 
-@livewireScripts
+@livewireScriptConfig 
 <script>
     window.addEventListener('show-message', function (event) {
         let type = event.detail.type;
