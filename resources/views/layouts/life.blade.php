@@ -14,8 +14,8 @@
 
     {{--Scripts which must load before full loading--}}
     @style('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css')
-    @script('https://github.com/aFarkas/html5shiv/blob/3.7.0/dist/html5shiv.js')
-    @script('https://github.com/scottjehl/Respond/blob/1.4.2/dest/respond.min.js')
+    @script('https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.0/html5shiv.min.js')
+    @script('https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js')
     @script('https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.2/dist/alpine.min.js')
     @script("/assets/admin/js/ckeditor.min.js")
     @vite(['resources/sass/app.scss'])
