@@ -5,6 +5,9 @@ return [
     // Enable whole module
     'enable' => true,
 
+    // To prevent registration of crud routes
+    'enable_crud_route' => true,
+
     // RTL Style , If you are using a language like Persian or Arabic change it true
     'rtl_mode' => false,
 
@@ -14,7 +17,10 @@ return [
     // Your user Model
     'user_model' => file_exists(app_path('User.php')) ? 'App\User' : 'App\Models\User',
 
-    // Your user Model
+    // Your role model
+    'role_model' => file_exists(app_path('Role.php')) ? 'App\Role' : 'App\Models\Role',
+
+    // Your personal access token Model
     'personal_access_token_model' => file_exists(app_path('Personalaccesstoken.php')) ? 'App\Personalaccesstoken' : 'App\Models\Personalaccesstoken',
 
     // Model verification of organizations

@@ -10,14 +10,14 @@
         </div>
     </div>
 
-    <form class="form-horizontal" x-data="{}" wire:submit.prevent="update" autocomplete="off">
+    <form class="form-horizontal" x-data="{}" wire:submit="update" autocomplete="off">
 
         <div class="card-body">
             <div class="row ">
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input id="route" type="text" placeholder="{{ __('Name of Role') }}" class="form-control rounded @error('name') is-invalid @enderror" wire:model="name">
+                        <input id="route" type="text" placeholder="{{ __('Name of Role') }}" class="form-control rounded @error('name') is-invalid @enderror" wire:model.live="name">
                         @error('name') <div class="invalid-feedback">{{ __($message) }}</div> @enderror
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                         <div class="form-check text-left col-md-4">
                             <input type="checkbox" class="form-check-input"
                                     id="permission_check_fullAccess"
-                                    wire:model="access.fullAccess"
+                                    wire:model.live="access.fullAccess"
                                     {{ isset($access['fullAccess']) ? 'checked' : '' }}
                                     value="1">
 
@@ -60,7 +60,7 @@
                                 </div>
                             
                                 <div class="@if(config('weirdo_panel.rtl_mode')) ml-1 @endif">
-                                    <input type="checkbox" class="form-check-input" wire:model="selectedAll.{{$dashKey}}" onchange="selectAll(this, '{{$dashKey}}')">
+                                    <input type="checkbox" class="form-check-input" wire:model.live="selectedAll.{{$dashKey}}" onchange="selectAll(this, '{{$dashKey}}')">
                                 </div>
                             
                             </div>
@@ -82,7 +82,7 @@
                                     <input type="checkbox" 
                                            class="form-check-input {{$dashKey}}"
                                            id="permission_check_{{$dashKey}}_{{$keyAccess['name']}}" 
-                                           wire:model="access.{{$dashKey}}.{{$keyAccess['name']}}" 
+                                           wire:model.live="access.{{$dashKey}}.{{$keyAccess['name']}}" 
                                            wire:click="checkSelectedAll('{{$key}}', '{{$dashKey}}')"
                                            {{ $check ? 'checked' : '' }} 
                                            value="1">

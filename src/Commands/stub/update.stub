@@ -27,7 +27,7 @@ class Update extends Component
         $this->validateOnly($input);
     }
 
-    protected function getRules()
+    public function getRules()
     {
         $rules = \Arr::map($this->rules, function ($val, $key) {
             if (strpos($val, "unique:{$this->{{ model }}->getTable()}")) {
@@ -45,7 +45,7 @@ class Update extends Component
         if($this->getRules())
             $this->validate();
 
-        $this->dispatchBrowserEvent('show-message', ['type' => 'success', 'message' => __('UpdatedMessage', ['name' => __('{{ modelName }}') ]) ]);
+        $this->dispatch('show-message', type: 'success', message: __('UpdatedMessage', ['name' => __('{{ modelName }}') ]));
         {{ uploadFile }}
         $this->{{ model }}->update([
             {{ fields }}

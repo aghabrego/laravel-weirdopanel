@@ -22,7 +22,7 @@ class isAdmin
         /** @var mixed $user */
         $user = auth()->user();
 
-        if(!AuthFacade::check($user->getKey())){
+        if(!AuthFacade::check($user->getkey())){
             return redirect($redirectPath);
         }
 

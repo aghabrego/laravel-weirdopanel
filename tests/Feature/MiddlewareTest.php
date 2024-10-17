@@ -12,8 +12,6 @@ use WeirdoPanelTest\TestCase;
 
 class MiddlewareTest extends TestCase
 {
-    use RefreshDatabase;
-
     protected function setUp(): void
     {
         parent::setUp();

@@ -1,6 +1,6 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\Admins;
+namespace WeirdoPanel\Livewire\Admins;
 
 use WeirdoPanel\Support\Contract\UserProviderFacade;
 use Livewire\Component;
@@ -18,7 +18,7 @@ class Single extends Component
     public function delete()
     {
         if (auth()->id() == $this->admin->id) {
-            $this->dispatchBrowserEvent('show-message', ['type' => 'error', 'message' => __('CannotDeleteMessage', ['name' => __('Admin')])]);
+            $this->dispatch('show-message', type: 'error', message: __('CannotDeleteMessage', ['name' => __('Admin')]));
             return;
         }
 
@@ -26,8 +26,8 @@ class Single extends Component
 
         UserProviderFacade::deleteAdmin($this->admin->id);
 
-        $this->dispatchBrowserEvent('show-message', ['type' => 'error', 'message' => __('DeletedMessage', ['name' => __('Admin') ] )]);
-        $this->emit('adminsUpdated');
+        $this->dispatch('show-message', type: 'error', message:  __('DeletedMessage', ['name' => __('Admin') ] ));
+        $this->dispatch('adminsUpdated');
     }
 
     public function render()

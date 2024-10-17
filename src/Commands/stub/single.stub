@@ -17,8 +17,8 @@ class Single extends Component
     public function delete()
     {
         $this->{{ model }}->delete();
-        $this->dispatchBrowserEvent('show-message', ['type' => 'error', 'message' => __('DeletedMessage', ['name' => __('{{ modelName }}') ]) ]);
-        $this->emit('{{ model }}Deleted');
+        $this->dispatch('show-message', type: 'error', message: __('DeletedMessage', ['name' => __('{{ modelName }}') ]));
+        $this->dispatch('{{ model }}Deleted');
     }
 
     public function render()

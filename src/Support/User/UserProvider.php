@@ -23,7 +23,7 @@ class UserProvider
             'is_superuser' => $is_super,
         ]);
 
-        if($is_super)
+        if($is_super && config('dynamicACL.enable', true))
             $this->makeSuperAdminRole($user);
 
         return [

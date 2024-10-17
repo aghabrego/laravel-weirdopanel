@@ -1,6 +1,6 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\Personalaccess;
+namespace WeirdoPanel\Livewire\Personalaccess;
 
 use Livewire\Component;
 use Illuminate\Support\Arr;
@@ -145,8 +145,8 @@ class Create extends Component
 
         $token = $user->createToken($this->name, ['*'], $expiredAt);
 
-        $this->dispatchBrowserEvent('show-message', ['type' => 'success', 'message' => __('CreatedMessage', ['name' => __('Personalaccesstoken') ])]);
-        $this->dispatchBrowserEvent('name-modal-personal-access-token-is-open', ['modalTokenIsOpen' => true, 'token' => $this->token]);
+        $this->dispatch('show-message', type: 'success', message: __('CreatedMessage', ['name' => __('Personalaccesstoken') ]));
+        $this->dispatch('name-modal-personal-access-token-is-open', modalTokenIsOpen: true, token: $this->token);
         $this->reset();
 
         $this->token = $token->plainTextToken;

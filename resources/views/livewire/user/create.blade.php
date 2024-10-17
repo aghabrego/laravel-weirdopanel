@@ -10,31 +10,31 @@
         </div>
     </div>
 
-    <form class="form-horizontal" wire:submit.prevent="create" enctype="multipart/form-data">
+    <form class="form-horizontal" wire:submit="create" enctype="multipart/form-data">
 
         <div class="card-body">
             <!-- Name Input -->
             <div class='form-group'>
                 <label for='input-name' class='col-sm-2 control-label '> {{ __('Name') }}</label>
-                <input type='text' id='input-name' wire:model.lazy='name' class="form-control  @error('name') is-invalid @enderror" placeholder='Please enter the name' autocomplete='on'>
+                <input type='text' id='input-name' wire:model.blur='name' class="form-control  @error('name') is-invalid @enderror" placeholder='Please enter the name' autocomplete='on'>
                 @error('name') <div class='invalid-feedback'>{{ $message }}</div> @enderror
             </div>
             <!-- Email Input -->
             <div class='form-group'>
                 <label for='input-email' class='col-sm-2 control-label '> {{ __('Email') }}</label>
-                <input type='email' id='input-email' wire:model.lazy='email' class="form-control border border-primary @error('email') is-invalid @enderror" placeholder='Please enter the email' autocomplete='on'>
+                <input type='email' id='input-email' wire:model.blur='email' class="form-control border border-primary @error('email') is-invalid @enderror" placeholder='Please enter the email' autocomplete='on'>
                 @error('email') <div class='invalid-feedback'>{{ $message }}</div> @enderror
             </div>
             <!-- Password Input -->
             <div class='form-group'>
                 <label for='inputpassword' class='col-sm-2 control-label '> {{ __('Password') }}</label>
-                <input type='password' id='input-password' wire:model.lazy='password' class="form-control  @error('password') is-invalid @enderror" placeholder='Please enter the password'>
+                <input type='password' id='input-password' wire:model.blur='password' class="form-control  @error('password') is-invalid @enderror" placeholder='Please enter the password'>
                 @error('password') <div class='invalid-feedback'>{{ $message }}</div> @enderror
             </div>
             <!-- Roles Input -->
             <div class='form-group'>
                 <label for='input-roles' class='col-sm-2 control-label '>{{__('Select Roles')}}</label>
-                <select multiple class="form-control rounded @error('selectedRoles') is-invalid @enderror" wire:model="selectedRoles">
+                <select multiple class="form-control rounded @error('selectedRoles') is-invalid @enderror" wire:model.live="selectedRoles">
                     <option value="null">{{__('Without Role')}}</option>
                     @foreach($roles as $role)
                         <option value="{{$role->id}}">{{$role->name}}</option>
@@ -46,7 +46,7 @@
                 <!-- Organizations Input -->
                 <div class='form-group'>
                     <label for='input-roles' class='col-sm-2 control-label '>{{__('Select Organizations')}}</label>
-                    <select multiple class="form-control rounded @error('selectedOrganizations') is-invalid @enderror" wire:model="selectedOrganizations">
+                    <select multiple class="form-control rounded @error('selectedOrganizations') is-invalid @enderror" wire:model.live="selectedOrganizations">
                         <option value="null">{{__('Without Organization')}}</option>
                         @foreach($organizations as $organization)
                             <option value="{{$organization->id}}">{{$organization->name}}</option>

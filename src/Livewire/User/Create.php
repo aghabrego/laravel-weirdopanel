@@ -1,9 +1,8 @@
 <?php
 
-namespace WeirdoPanel\Http\Livewire\User;
+namespace WeirdoPanel\Livewire\User;
 
 use Livewire\Component;
-use DynamicAcl\Models\Role;
 use Livewire\WithFileUploads;
 use WeirdoPanel\Support\Contract\OrganizationFacade;
 use WeirdoPanel\Support\Contract\UserProviderFacade;
@@ -36,6 +35,11 @@ class Create extends Component
         return app(config('weirdo_panel.user_model'));
     }
 
+    public function getRoleModel()
+    {
+        return app(config('weirdo_panel.role_model'));
+    }
+
     public function create()
     {
         if($this->getRules())
@@ -47,7 +51,7 @@ class Create extends Component
         if (isset($this->selectedOrganizations[0]) && $this->selectedOrganizations[0] == "null")
             $this->selectedOrganizations = [];
 
-        $this->dispatchBrowserEvent('show-message', ['type' => 'success', 'message' => __('CreatedMessage', ['name' => __('User') ])]);
+        $this->dispatch('show-message', type: 'success', message: __('CreatedMessage', ['name' => __('User') ]));
         $userModel = $this->getModel();
         $user = $userModel->create([
             'name' => $this->name,
@@ -68,7 +72,8 @@ class Create extends Component
 
     public function render()
     {
-        $this->roles = Role::where('name', '<>', 'super_admin')->get();
+        $role = $this->getRoleModel();
+        $this->roles = $role->all();
 
         if (config('weirdo_panel.with_organization_model')) {
             $this->organizations = OrganizationFacade::allOrganizations();
