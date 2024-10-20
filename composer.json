@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "php": "^7.2.5|^8.0",
+        "php": "^8.0",
         "illuminate/support": "^10",
         "weirdo/laravel-easyblade" : "^0.8",
         "laravel/framework": "^10",
