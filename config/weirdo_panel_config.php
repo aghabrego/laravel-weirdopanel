@@ -43,6 +43,13 @@ return [
     // Specify the User model attribute
     'user_organization' => (file_exists(app_path('Models/Organization.php'))) ? 'organization_id' : false,
 
+    // How should the organization selection be stored?
+    'user_set_organization' => [
+        'put' => 'putWithoutUpdate',
+        'remove' => 'removeORG',
+        'get' => 'getORG',
+    ],
+
     // it's a place where a user if not authenticated will be redirected
     'redirect_unauthorized' => '/',
 

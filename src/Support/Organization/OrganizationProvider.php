@@ -2,7 +2,6 @@
 
 namespace WeirdoPanel\Support\Organization;
 
-use Illuminate\Support\Facades\Cache;
 use WeirdoPanel\Traits\CustomConnection;
 use WeirdoPanel\Support\Contract\OrganizationFacade;
 use WeirdoPanel\Support\Contract\UserProviderFacade;
@@ -28,34 +27,14 @@ class OrganizationProvider
     }
 
     /**
-     * @param string $org
      * @return string
      */
-    public function getORG()
+    public function getOrganizationId()
     {
         $user = UserProviderFacade::findUser(auth()->id());
-        $primaryKey = $user->primaryKey;
-        $key = $user->getKey();
-        $fullKey = "weirdopanel_org_{$primaryKey}_{$key}";
-        $orgId = Cache::get($fullKey);
-        if (!empty($orgId)) {
-            return $orgId;
-        }
-        if (!isset($user->{config('weirdo_panel.user_organization')})) {
-            return '';
-        }
+        $withOrg = (method_exists($user, config('weirdo_panel.user_set_organization.get')));
 
-        return (string)$user->{config('weirdo_panel.user_organization')};
-    }
-
-    /**
-     * @return int
-     */
-    public function getOrganizationId(): int
-    {
-        $orgId = $this->getORG();
-
-        return $orgId;
+        return $withOrg ? $user->{config('weirdo_panel.user_set_organization.get')}() : '';
     }
 
     /**

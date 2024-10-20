@@ -7,7 +7,7 @@ use WeirdoPanel\Support\Contract\BaseFacade;
 /**
  * @method static string getOrganizationModel()
  * @method static \Illuminate\Database\Eloquent\Model getOrganizationModelInstance()
- * @method static int getOrganizationId()
+ * @method static string getOrganizationId()
  * @method static \Illuminate\Support\Collection getOrganizations()
  * @method static \Illuminate\Support\Collection allOrganizations()
  * @method static array organizations()

@@ -98,7 +98,7 @@
                                 <select id="organizationChanger" class="form-control bg-white custom-shadow border-0 h-25" style="border-radius: 6px">
                                     <option value="">--SELECCIONAR--</option>
                                     @foreach(\WeirdoPanel\Support\Contract\OrganizationFacade::getOrganizations() as $key => $value)
-                                        <option value="{{ $value->id }}" {{ \WeirdoPanel\Support\Contract\OrganizationFacade::getOrganizationId() === $value->id ? 'selected' : '' }}>{{ $value->name }}</option>
+                                        <option value="{{ $value->id }}" {{ \WeirdoPanel\Support\Contract\OrganizationFacade::getOrganizationId() === (string)$value->id ? 'selected' : '' }}>{{ $value->name }}</option>
                                     @endforeach
                                 </select>
                                 <script>

@@ -60,12 +60,12 @@ Route::get('setLang', function (){
 
 Route::get('setOrganization', function () {
     $org = request()->get('org');
-    $user = UserProviderFacade::findUser(Auth()->id());
-    $primaryKey = $user->primaryKey;
-    $key = $user->getKey();
-    $fullKey = "weirdopanel_org_{$primaryKey}_{$key}";
 
-    Cache::put($fullKey, $org);
+    $user = UserProviderFacade::findUser(Auth()->id());
+
+    if (method_exists($user, config('weirdo_panel.user_set_organization'))) {
+        $user->{config('weirdo_panel.user_set_organization')}($org);
+    }
 
     if (config('weirdo_panel.user_organization') !== false) {
         $user->{config('weirdo_panel.user_organization')} = $org;
