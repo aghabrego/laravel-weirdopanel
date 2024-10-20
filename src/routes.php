@@ -72,6 +72,10 @@ Route::get('setOrganization', function () {
         $user->save();
     }
 
+    if (method_exists($user, config('weirdo_panel.user_set_connection'))) {
+        $user->{config('weirdo_panel.user_set_connection')}($org);
+    }
+
     return redirect()->back();
 })->name('setOrganization');
 
