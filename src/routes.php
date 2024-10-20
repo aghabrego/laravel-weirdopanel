@@ -60,11 +60,6 @@ Route::get('setLang', function (){
 
 Route::get('setOrganization', function () {
     $org = request()->get('org');
-    // Sin organizacion
-    if (empty($org)) {
-        return redirect(config('weirdo_panel.redirect_unauthorized'));
-    }
-
     $user = UserProviderFacade::findUser(Auth()->id());
     $primaryKey = $user->primaryKey;
     $key = $user->getKey();
