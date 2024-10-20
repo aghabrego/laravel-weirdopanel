@@ -174,7 +174,7 @@
 @script("/assets/admin/js/custom.min.js")
 @vite(['resources/js/UploadAdapter.js'])
 
-@livewireScriptConfig 
+@livewireScripts
 <script>
     window.addEventListener('show-message', function (event) {
         let type = event.detail.type;
