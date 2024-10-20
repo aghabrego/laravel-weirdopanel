@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
+use WeirdoPanel\Support\Contract\UserProviderFacade;
 
 Route::view('/', "admin::home")->name('home');
 
@@ -55,6 +57,28 @@ Route::get('setLang', function (){
 
     return redirect()->back();
 })->name('setLang');
+
+Route::get('setOrganization', function () {
+    $org = request()->get('org');
+    // Sin organizacion
+    if (empty($org)) {
+        return redirect(config('weirdo_panel.redirect_unauthorized'));
+    }
+
+    $user = UserProviderFacade::findUser(Auth()->id());
+    $primaryKey = $user->primaryKey;
+    $key = $user->getKey();
+    $fullKey = "weirdopanel_org_{$primaryKey}_{$key}";
+
+    Cache::put($fullKey, $org);
+
+    if (config('weirdo_panel.user_organization') !== false) {
+        $user->{config('weirdo_panel.user_organization')} = $org;
+        $user->save();
+    }
+
+    return redirect()->back();
+})->name('setOrganization');
 
 Route::get('translation', \WeirdoPanel\Http\Livewire\Translation\Manage::class)
     ->middleware('dynamicAcl')

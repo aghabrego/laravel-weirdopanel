@@ -12,16 +12,16 @@ return [
     'lang' => 'en',
 
     // Your user Model
-    'user_model' => file_exists(app_path('User.php')) ? 'App\User' : 'App\Models\User',
+    'user_model' => 'App\Models\User',
 
     // Your user Model
-    'personal_access_token_model' => file_exists(app_path('Personalaccesstoken.php')) ? 'App\Personalaccesstoken' : 'App\Models\Personalaccesstoken',
+    'personal_access_token_model' => 'App\Models\Personalaccesstoken',
 
     // Model verification of organizations
-    'with_organization_model' => (file_exists(app_path('Organization.php')) || file_exists(app_path('Models/Organization.php'))),
+    'with_organization_model' => file_exists(app_path('Models/Organization.php')),
 
     // Organization model
-    'organization_model' => file_exists(app_path('Organization.php')) ? 'App\Organization' : 'App\Models\Organization',
+    'organization_model' => 'App\Models\Organization',
 
     // set default guard to authenticate admins
     'auth_guard' => config('auth.defaults.guard') ?? 'web',
@@ -38,6 +38,10 @@ return [
 
     //The namespace of lang manager class
     'lang_manager_class' => \WeirdoPanel\Services\LangService::class,
+
+    // If you want to store the organization id when changing
+    // Specify the User model attribute
+    'user_organization' => (file_exists(app_path('Models/Organization.php'))) ? 'organization_id' : false,
 
     // it's a place where a user if not authenticated will be redirected
     'redirect_unauthorized' => '/',

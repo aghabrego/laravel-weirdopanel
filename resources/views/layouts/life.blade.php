@@ -14,7 +14,7 @@
 
     {{--Styles--}}
     @livewireStyles
-    @style('/assets/admin/animate.min.css')
+    @style('/assets/admin/css/animate.min.css')
     @vite(['resources/sass/app.scss'])
     @style("/assets/admin/css/style.min.css")
     @if(config('weirdo_panel.rtl_mode'))
@@ -94,23 +94,25 @@
                         </a>
                     </li>
 
+                    @if (config('weirdo_panel.with_organization_model'))
                     <li class="nav-item d-none d-md-block">
                         <a class="nav-link" href="javascript:void(0)">
                             <div class="customize-input">
                                 <select id="organizationChanger" class="form-control bg-white custom-shadow border-0 h-25" style="border-radius: 6px">
                                     <option value="">--SELECCIONAR--</option>
-                                    @foreach(\App\Facades\OrganizationFacade::getOrganizations() as $key => $value)
-                                        <option value="{{ $value['id'] }}" {{ \App\Facades\OrganizationFacade::getOrganizationId() === $value['id'] ? 'selected' : '' }}>{{ $value['name'] }}</option>
+                                    @foreach(\WeirdoPanel\Support\Contract\OrganizationFacade::getOrganizations() as $key => $value)
+                                        <option value="{{ $value['id'] }}" {{ \WeirdoPanel\Support\Contract\OrganizationFacade::getOrganizationId() === $value['id'] ? 'selected' : '' }}>{{ $value['name'] }}</option>
                                     @endforeach
                                 </select>
                                 <script>
                                     document.getElementById('organizationChanger').addEventListener('change', function (){
-                                        window.location.href = "{{ route('setOrganization') }}?org=" + this.value;
+                                        window.location.href = "{{ route('admin.setOrganization') }}?org=" + this.value;
                                     });
                                 </script>
                             </div>
                         </a>
                     </li>
+                    @endif
 
                     <!-- User profile and search -->
                     <li class="nav-item dropdown">
