@@ -63,8 +63,8 @@ Route::get('setOrganization', function () {
 
     $user = UserProviderFacade::findUser(Auth()->id());
 
-    if (method_exists($user, config('weirdo_panel.user_set_organization'))) {
-        $user->{config('weirdo_panel.user_set_organization')}($org);
+    if (method_exists($user, config('weirdo_panel.user_set_organization.put'))) {
+        $user->{config('weirdo_panel.user_set_organization.put')}($org);
     }
 
     if (config('weirdo_panel.user_organization') !== false) {
