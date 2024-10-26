@@ -53,6 +53,9 @@ return [
     // Multiple connections are used depending on the organization
     'user_set_connection' => (file_exists(app_path('Models/Organization.php'))) ? 'setConnectionAccToOrg' : false,
 
+    // Relationship between user model and organizations
+    'user_organization_relationship' => (file_exists(app_path('Models/Organization.php'))) ? 'organizations' : false,
+
     // it's a place where a user if not authenticated will be redirected
     'redirect_unauthorized' => '/',
 

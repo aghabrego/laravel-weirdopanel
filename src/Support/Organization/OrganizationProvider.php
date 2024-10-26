@@ -43,16 +43,16 @@ class OrganizationProvider
     public function getOrganizations()
     {
         $this->setDefaultConnection();
-        $organizationModel = OrganizationFacade::getOrganizationModelInstance();
-        $userId = auth()->id();
-        /** @var \Illuminate\Database\Eloquent\Builder $query */
-        $query = $organizationModel::query()->orderBy('id', 'desc');
-        $query->where('user_id', $userId);
-        $organizations = $query->get()->map(function ($val) {
-            return (object)['id' => $val->id, 'name' => $val->pretty_name];
-        });
+        $user = UserProviderFacade::findUser(auth()->id());
+        if (method_exists($user, config('weirdo_panel.user_organization_relationship'))) {
+            $organizations = $user->{config('weirdo_panel.user_organization_relationship')};
 
-        return $organizations;
+            return $organizations->map(function ($val) {
+                return (object)['id' => $val->id, 'name' => $val->pretty_name];
+            });
+        }
+
+        return collect([]);
     }
 
     /**
@@ -92,11 +92,15 @@ class OrganizationProvider
     {
         $this->setDefaultConnection();
         $user = UserProviderFacade::findUser($id);
-        $user->organizations()->sync($organizations);
+        if (method_exists($user, config('weirdo_panel.user_organization_relationship'))) {
+            $user->{config('weirdo_panel.user_organization_relationship')}()->sync($organizations);
 
-        return [
-            'type' => 'success',
-            'message' => "Usuario '$id' se asignó a la organización",
-        ];
+            return [
+                'type' => 'success',
+                'message' => "Usuario '$id' se asignó a la organización",
+            ];
+        }
+
+        return [];
     }
 }
