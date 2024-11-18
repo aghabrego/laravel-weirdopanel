@@ -46,7 +46,7 @@
                 <!-- Logo -->
                 <div class="navbar-brand">
                     <a href="@route(getRouteName().'.home')">
-                        <img src="/img/ACi-CLOUD.png" alt="" width="200" height="70" />
+                        <span class="logo-text">{{ __('WeirdoPanel') }}</span>
                     </a>
 
                     <div class="container-checkbox">

@@ -76,9 +76,6 @@
                 </li>
                 @endif
 
-                @include('admin::layouts.child-sidebar-menu')
-
-
                 <li class="list-divider"></li>
                 <li class="sidebar-item">
                     <a href="@route(getRouteName().'.logout')" class="sidebar-link sidebar-link" onclick="event.preventDefault(); document.querySelector('#logout').submit()" aria-expanded="false">
