@@ -174,7 +174,6 @@
 @script("/assets/admin/js/feather.min.js")
 @script("/assets/admin/js/sidebarmenu.min.js")
 @script("/assets/admin/js/custom.min.js")
-@vite(['resources/js/UploadAdapter.js'])
 
 @livewireScripts
 <script>
