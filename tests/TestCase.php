@@ -10,11 +10,14 @@ use WeirdoPanelTest\Dependencies\User;
 use WeirdoPanelTest\Dependencies\Article;
 use WeirdoPanel\WeirdoPanelServiceProvider;
 use Orchestra\Testbench\TestCase as _TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use DynamicAcl\Providers\DynamicAclServiceProvider;
 use Javoscript\MacroableModels\MacroableModelsServiceProvider;
 
 abstract class TestCase extends _TestCase
 {
+    use RefreshDatabase;
+    
     /**
      * @var \WeirdoPanelTest\Dependencies\User
      */
@@ -25,12 +28,24 @@ abstract class TestCase extends _TestCase
      */
     protected $parser;
 
+    /**
+     * Set up the test
+     * 
+     * @return void
+     */
     protected function setUp(): void
     {
         parent::setUp();
 
+        // Configurar la base de datos en memoria
+        config()->set('database.default', 'sqlite');
+        config()->set('database.connections.sqlite.database', ':memory:');
+
         $this->loadMigrationsFrom(__DIR__.'/Dependencies/database/migrations');
         $this->loadMigrationsFrom(__DIR__.'/../vendor/weirdo/dynamic-acl/database/migrations');
+
+        $this->refreshDatabase();
+
         $this->setUser();
         $this->setParser();
         

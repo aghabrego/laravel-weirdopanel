@@ -4,7 +4,7 @@
 namespace WeirdoPanelTest\Dependencies;
 
 
-use WeirdoPanel\Commands\CRUDActions\StubParser;
+use WeirdoPanel\Parsers\StubParser;
 
 class StubTester
 {

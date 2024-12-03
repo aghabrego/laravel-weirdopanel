@@ -9,6 +9,20 @@ use WeirdoPanel\Parsers\HTMLInputs\Text;
 use WeirdoPanel\Parsers\HTMLInputs\Email;
 use WeirdoPanelTest\Dependencies\Article;
 use WeirdoPanel\Parsers\HTMLInputs\Select;
+use WeirdoPanel\Parsers\HTMLInputs\MultiSelect;
+
+class DataProviderService
+{
+    public static function capabilities()
+    {
+        return [
+            'create' => 'Create',
+            'read' => 'Read',
+            'update' => 'Update',
+            'delete' => 'Delete',
+        ];
+    }
+}
 
 class StubParserTest extends \WeirdoPanelTest\TestCase
 {
@@ -144,6 +158,9 @@ class StubParserTest extends \WeirdoPanelTest\TestCase
         $this->assertInstanceOf(Field::class, $normalizedField);
 
         $this->assertEquals($normalizedField->getTitle(), 'Email');
+
+        $normalizedField = $this->parser->normalizeField('capabilities')->asBadge();
+        $this->assertEquals($normalizedField->getTitle(), 'Capabilities');
     }
 
     /** @test * */
@@ -163,5 +180,8 @@ class StubParserTest extends \WeirdoPanelTest\TestCase
 
         $normalizedField = $this->parser->normalizeInput('category', ['select' => []]);
         $this->assertInstanceOf(Select::class, $normalizedField);
+
+        $normalizedField = $this->parser->normalizeInput('capabilities', MultiSelect::label(__('Capabilities'))->dataProvider([DataProviderService::class, 'capabilities']));
+        $this->assertInstanceOf(MultiSelect::class, $normalizedField);
     }
 }

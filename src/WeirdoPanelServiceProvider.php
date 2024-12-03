@@ -45,7 +45,7 @@ class WeirdoPanelServiceProvider extends ServiceProvider
         Connection::macro('useDatabases', function (string $databaseName) {
             /** @var \Illuminate\Database\Connection $this */
 
-            if (strpos($databaseName, "memory:") !== false) {
+            if (strpos($databaseName, ":memory:") !== false) {
                 return;
             }
 

@@ -1,1 +1,10 @@
-<td class=""><span class="badge badge-{{ badgeType }} font-14 {{ style }}">{{ ${{ model }}->{{ key }} }}</span></td>
+<td class="">
+<td class="">
+    @if (is_array(${{ model }}->{{ key }}))
+        @foreach (${{ model }}->{{ key }} as $capability)
+            <span class="badge badge-{{ badgeType }} font-14 {{ style }}">{{ $capability }}</span>
+        @endforeach
+    @else
+        <span class="badge badge-{{ badgeType }} font-14 {{ style }}">{{ ${{ model }}->{{ key }} }}</span>
+    @endif
+</td>
