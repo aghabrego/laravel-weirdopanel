@@ -76,6 +76,10 @@ Route::get('setOrganization', function () {
         $user->{config('weirdo_panel.user_set_connection')}($org);
     }
 
+    if (empty($org)) {
+        return redirect(config('weirdo_panel.route_prefix'));
+    }
+
     return redirect()->back();
 })->name('setOrganization');
 
